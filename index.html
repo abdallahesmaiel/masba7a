@@ -2,26 +2,50 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>المسبحة الإلكترونية</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Tasbih Pro | مسبحة إلكترونية فاخرة</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=El+Messiri:wght@400;600;700&family=Tajawal:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        /* إعادة التعيين */
+        /* CSS Variables */
+        :root {
+            --primary-gold: #D4AF37;
+            --secondary-gold: #FFD700;
+            --dark-gold: #B8860B;
+            --light-gold: #FFF8DC;
+            --deep-green: #0A3D2E;
+            --medium-green: #1B5E20;
+            --light-green: #2E7D32;
+            --black: #121212;
+            --dark-gray: #1E1E1E;
+            --medium-gray: #2D2D2D;
+            --light-gray: #3D3D3D;
+            --white: #F5F5F5;
+            --shadow-heavy: 0 20px 50px rgba(0, 0, 0, 0.5);
+            --shadow-medium: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --shadow-light: 0 5px 15px rgba(0, 0, 0, 0.2);
+            --glow-gold: 0 0 30px rgba(212, 175, 55, 0.5);
+            --border-radius: 20px;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Reset & Base */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             -webkit-tap-highlight-color: transparent;
-            -webkit-user-select: none;
-            user-select: none;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         
         html, body {
-            height: 100%;
             width: 100%;
+            height: 100%;
             overflow: hidden;
-            font-family: 'Cairo', sans-serif;
+            font-family: 'Almarai', sans-serif;
+            background: linear-gradient(135deg, var(--black) 0%, var(--deep-green) 100%);
+            color: var(--white);
             position: fixed;
             top: 0;
             left: 0;
@@ -29,771 +53,998 @@
             bottom: 0;
         }
         
-        body {
-            background: linear-gradient(135deg, #0a5c36 0%, #073421 100%);
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        /* الحاوية الرئيسية */
-        .app-wrapper {
+        /* Luxury Container */
+        .luxury-container {
             width: 100%;
             height: 100vh;
-            max-width: 500px;
+            max-width: 600px;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            overflow: hidden;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(27, 94, 32, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, var(--dark-gray) 0%, var(--black) 100%);
             position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: var(--shadow-heavy);
         }
         
-        /* الهيدر */
-        .app-header {
-            background: linear-gradient(to right, #0a5c36, #1a6e1a);
-            padding: 15px 20px;
-            text-align: center;
-            border-bottom: 3px solid #ffd166;
-            flex-shrink: 0;
+        /* Gold Border Effect */
+        .luxury-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 60%, rgba(212, 175, 55, 0.1) 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        /* Luxury Header */
+        .luxury-header {
+            padding: 25px 30px;
+            background: linear-gradient(180deg, rgba(30, 30, 30, 0.9) 0%, rgba(18, 18, 18, 0.9) 100%);
+            border-bottom: 2px solid var(--primary-gold);
+            position: relative;
             z-index: 10;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
         }
         
-        .app-header h1 {
-            font-size: 1.6rem;
-            margin-bottom: 5px;
+        .luxury-header::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 10%;
+            width: 80%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-gold), transparent);
         }
         
-        .app-header p {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-        
-        /* المحتوى الرئيسي - قابل للتمرير */
-        .scroll-content {
-            flex: 1;
-            overflow-y: auto;
-            overflow-x: hidden;
-            -webkit-overflow-scrolling: touch;
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        
-        /* منطقة العداد */
-        .counter-section {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 20px;
+        .app-title {
             text-align: center;
-            border: 2px solid rgba(255, 209, 102, 0.3);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 10px;
+        }
+        
+        .app-title h1 {
+            font-family: 'El Messiri', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--secondary-gold) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+            letter-spacing: 1px;
+        }
+        
+        .app-subtitle {
+            font-family: 'Tajawal', sans-serif;
+            font-size: 1rem;
+            color: var(--light-gold);
+            opacity: 0.8;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+        
+        /* Main Content Area */
+        .main-content {
+            flex: 1;
+            padding: 25px;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Counter Display - Luxury Version */
+        .counter-display-section {
+            background: linear-gradient(135deg, rgba(30, 30, 30, 0.9) 0%, rgba(45, 45, 45, 0.7) 100%);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 
+                var(--shadow-medium),
+                inset 0 0 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .counter-display-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-gold), var(--secondary-gold), var(--primary-gold));
         }
         
         .counter-label {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: #ffd166;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 15px;
+            margin-bottom: 20px;
+            color: var(--light-gold);
+            font-size: 1.3rem;
+            font-weight: 300;
+            letter-spacing: 1px;
         }
         
-        .counter-display {
-            font-size: 4rem;
-            font-weight: bold;
-            color: #ffd166;
-            margin: 15px 0;
-            font-family: monospace;
-            text-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+        .counter-label i {
+            color: var(--primary-gold);
+            font-size: 1.5rem;
         }
         
-        .current-tasbih {
-            font-size: 1.4rem;
-            background: rgba(10, 92, 54, 0.3);
-            padding: 12px;
-            border-radius: 10px;
-            margin: 10px 0;
-            min-height: 60px;
+        .counter-number {
+            font-family: 'Tajawal', monospace;
+            font-size: 6rem;
+            font-weight: 800;
+            text-align: center;
+            background: linear-gradient(135deg, var(--secondary-gold) 0%, var(--primary-gold) 50%, var(--secondary-gold) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
+            margin: 20px 0;
+            letter-spacing: 3px;
+            position: relative;
+        }
+        
+        .counter-number::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 25%;
+            width: 50%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary-gold), transparent);
+        }
+        
+        .current-dhikr {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 25px 0;
+            text-align: center;
+            font-family: 'El Messiri', serif;
+            font-size: 1.8rem;
+            color: var(--light-gold);
+            min-height: 80px;
             display: flex;
             align-items: center;
             justify-content: center;
+            backdrop-filter: blur(5px);
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
         }
         
-        /* أزرار التحكم */
-        .control-buttons {
+        /* Luxury Controls */
+        .luxury-controls {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-top: 15px;
+            gap: 15px;
+            margin: 25px 0;
         }
         
-        .ctrl-btn {
-            padding: 12px;
+        .luxury-btn {
+            padding: 20px;
             border: none;
-            border-radius: 10px;
-            font-size: 1rem;
-            font-weight: bold;
+            border-radius: 15px;
+            font-family: 'Almarai', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 12px;
             cursor: pointer;
-            transition: transform 0.1s;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            letter-spacing: 1px;
         }
         
-        .ctrl-btn:active {
-            transform: scale(0.95);
+        .luxury-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+            opacity: 0;
+            transition: var(--transition);
+            z-index: -1;
         }
         
-        .count-btn {
+        .luxury-btn:hover::before {
+            opacity: 1;
+        }
+        
+        .luxury-btn:active {
+            transform: translateY(2px);
+        }
+        
+        .btn-primary {
             grid-column: span 2;
-            background: #ffd166;
-            color: #0a5c36;
-            height: 55px;
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--dark-gold) 100%);
+            color: var(--black);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
         }
         
-        .undo-btn {
-            background: #4CAF50;
-            color: white;
-            height: 50px;
+        .btn-primary:hover {
+            box-shadow: var(--glow-gold);
+            transform: translateY(-3px);
         }
         
-        .reset-btn {
-            background: #f44336;
-            color: white;
-            height: 50px;
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--medium-green) 0%, var(--light-green) 100%);
+            color: var(--white);
+            box-shadow: 0 8px 20px rgba(27, 94, 32, 0.3);
         }
         
-        /* خيارات التسبيح */
-        .options-section {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 15px;
-            padding: 15px;
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(27, 94, 32, 0.4);
         }
         
-        .options-title {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-            color: #ffd166;
+        .btn-reset {
+            background: linear-gradient(135deg, #C62828 0%, #B71C1C 100%);
+            color: var(--white);
+            box-shadow: 0 8px 20px rgba(183, 28, 28, 0.3);
+        }
+        
+        .btn-reset:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(183, 28, 28, 0.4);
+        }
+        
+        /* Dhikr Types - Luxury Grid */
+        .dhikr-types {
+            background: linear-gradient(135deg, rgba(30, 30, 30, 0.9) 0%, rgba(45, 45, 45, 0.7) 100%);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin: 25px 0;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .section-title {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
+            margin-bottom: 20px;
+            color: var(--light-gold);
+            font-size: 1.4rem;
+            font-weight: 600;
         }
         
-        .tasbih-grid {
+        .section-title i {
+            color: var(--primary-gold);
+            font-size: 1.6rem;
+        }
+        
+        .dhikr-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
+            gap: 15px;
         }
         
-        .tasbih-btn {
-            padding: 12px 8px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            color: white;
-            font-size: 0.9rem;
+        .dhikr-option {
+            background: rgba(61, 61, 61, 0.5);
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            padding: 18px 12px;
             text-align: center;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: var(--transition);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 70px;
+            min-height: 100px;
+            backdrop-filter: blur(5px);
         }
         
-        .tasbih-btn:active {
-            transform: scale(0.95);
+        .dhikr-option:hover {
+            border-color: var(--primary-gold);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.2);
         }
         
-        .tasbih-btn.active {
-            background: rgba(255, 209, 102, 0.3);
-            border-color: #ffd166;
-            color: #ffd166;
+        .dhikr-option.active {
+            background: rgba(212, 175, 55, 0.15);
+            border-color: var(--primary-gold);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
         }
         
-        .tasbih-name {
-            font-weight: bold;
-            margin-bottom: 5px;
+        .dhikr-text {
+            font-family: 'El Messiri', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--light-gold);
+            margin-bottom: 8px;
         }
         
-        .tasbih-desc {
-            font-size: 0.8rem;
+        .dhikr-desc {
+            font-size: 0.85rem;
+            color: var(--primary-gold);
             opacity: 0.8;
+            font-weight: 300;
         }
         
-        /* الإحصائيات */
+        /* Stats Section - Luxury */
         .stats-section {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 15px;
-            padding: 15px;
-        }
-        
-        .stats-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
+            gap: 15px;
+            margin: 25px 0;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(30, 30, 30, 0.9) 0%, rgba(45, 45, 45, 0.7) 100%);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(212, 175, 55, 0.2);
         }
         
-        .stat-item {
+        .stat-card {
             text-align: center;
-            padding: 12px 8px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
+            padding: 20px 10px;
+            background: rgba(212, 175, 55, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
         }
         
         .stat-value {
-            font-size: 1.4rem;
-            font-weight: bold;
-            color: #ffd166;
-            margin-bottom: 5px;
+            font-family: 'Tajawal', monospace;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary-gold);
+            margin-bottom: 8px;
+            text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
         }
         
         .stat-label {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
+            color: var(--light-gold);
             opacity: 0.8;
+            font-weight: 300;
+            letter-spacing: 1px;
         }
         
-        /* الفوتر */
-        .app-footer {
-            padding: 12px;
+        /* Footer */
+        .luxury-footer {
+            padding: 20px;
             text-align: center;
-            background: rgba(0, 0, 0, 0.4);
-            font-size: 0.85rem;
-            opacity: 0.8;
-            flex-shrink: 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: linear-gradient(180deg, rgba(18, 18, 18, 0.9) 0%, rgba(30, 30, 30, 0.9) 100%);
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            position: relative;
+            z-index: 10;
         }
         
-        /* التأثيرات */
+        .footer-text {
+            font-family: 'Tajawal', sans-serif;
+            font-size: 0.9rem;
+            color: var(--light-gold);
+            opacity: 0.7;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        
+        /* Scrollbar Styling */
+        .main-content::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .main-content::-webkit-scrollbar-track {
+            background: rgba(30, 30, 30, 0.5);
+            border-radius: 10px;
+        }
+        
+        .main-content::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--primary-gold), var(--dark-gold));
+            border-radius: 10px;
+        }
+        
+        .main-content::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, var(--secondary-gold), var(--primary-gold));
+        }
+        
+        /* Animations */
         @keyframes pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
         
-        .pulse {
+        @keyframes glow {
+            0% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(212, 175, 55, 0.6); }
+            100% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); }
+        }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .pulse-effect {
             animation: pulse 0.3s ease;
         }
         
-        @keyframes resetAnim {
-            0% { opacity: 1; }
-            50% { opacity: 0.5; }
-            100% { opacity: 1; }
+        .glow-effect {
+            animation: glow 1s ease;
         }
         
-        .reset-anim {
-            animation: resetAnim 0.5s ease;
+        .slide-in {
+            animation: slideIn 0.5s ease;
         }
         
-        /* شريط التمرير */
-        .scroll-content::-webkit-scrollbar {
-            width: 5px;
-        }
-        
-        .scroll-content::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-        }
-        
-        .scroll-content::-webkit-scrollbar-thumb {
-            background: rgba(255, 209, 102, 0.5);
-            border-radius: 10px;
-        }
-        
-        .scroll-content::-webkit-scrollbar-thumb:hover {
-            background: rgba(255, 209, 102, 0.7);
-        }
-        
-        /* استعلامات وسائط */
-        @media (min-height: 700px) {
-            .counter-display {
-                font-size: 4.5rem;
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .counter-number {
+                font-size: 5rem;
             }
             
-            .current-tasbih {
-                font-size: 1.5rem;
-                min-height: 65px;
+            .current-dhikr {
+                font-size: 1.6rem;
+                min-height: 70px;
+                padding: 15px;
             }
             
-            .ctrl-btn {
-                height: 55px;
+            .luxury-btn {
+                padding: 18px;
+                font-size: 1rem;
+            }
+            
+            .dhikr-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .dhikr-option {
+                min-height: 90px;
+                padding: 15px 10px;
+            }
+            
+            .dhikr-text {
                 font-size: 1.1rem;
             }
-            
-            .tasbih-btn {
-                min-height: 75px;
-            }
-            
-            .scroll-content {
-                gap: 20px;
-                padding: 20px;
-            }
         }
         
-        @media (max-height: 600px) {
-            .app-header {
-                padding: 12px 15px;
+        @media (max-width: 480px) {
+            .luxury-header {
+                padding: 20px 15px;
             }
             
-            .app-header h1 {
+            .app-title h1 {
+                font-size: 1.8rem;
+            }
+            
+            .counter-number {
+                font-size: 4rem;
+            }
+            
+            .current-dhikr {
                 font-size: 1.4rem;
-            }
-            
-            .counter-display {
-                font-size: 3.5rem;
-            }
-            
-            .current-tasbih {
-                font-size: 1.2rem;
-                min-height: 55px;
-                padding: 10px;
-            }
-            
-            .ctrl-btn {
-                height: 45px;
-                font-size: 0.9rem;
-                padding: 10px;
-            }
-            
-            .tasbih-btn {
                 min-height: 60px;
-                padding: 10px 6px;
-                font-size: 0.85rem;
-            }
-            
-            .scroll-content {
                 padding: 12px;
-                gap: 12px;
-            }
-        }
-        
-        @media (min-width: 768px) and (orientation: landscape) {
-            .app-wrapper {
-                max-width: 100%;
-                flex-direction: row;
             }
             
-            .app-header {
-                width: 250px;
-                height: 100%;
-                border-bottom: none;
-                border-right: 3px solid #ffd166;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-            }
-            
-            .scroll-content {
-                width: calc(100% - 250px);
-            }
-            
-            .tasbih-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-        
-        @media (max-width: 350px) {
-            .tasbih-grid {
+            .luxury-controls {
                 grid-template-columns: 1fr;
             }
             
-            .stats-grid {
+            .btn-primary {
+                grid-column: span 1;
+            }
+            
+            .dhikr-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-section {
                 grid-template-columns: repeat(2, 1fr);
             }
-        }
-        
-        /* إصلاحات خاصة بالجوال */
-        input, textarea, select, button {
-            font-size: 16px; /* منع التكبير في iOS */
-        }
-        
-        /* ضبط للآيفون */
-        @supports (-webkit-touch-callout: none) {
-            .app-wrapper {
-                height: -webkit-fill-available;
+            
+            .stat-card:nth-child(3) {
+                grid-column: span 2;
             }
+        }
+        
+        @media (max-height: 700px) {
+            .main-content {
+                padding: 15px;
+            }
+            
+            .counter-display-section {
+                padding: 20px;
+            }
+            
+            .counter-number {
+                font-size: 4rem;
+                margin: 15px 0;
+            }
+            
+            .current-dhikr {
+                font-size: 1.4rem;
+                min-height: 60px;
+                margin: 15px 0;
+            }
+            
+            .luxury-btn {
+                padding: 15px;
+            }
+        }
+        
+        /* iOS Safe Area */
+        @supports (padding: max(0px)) {
+            .luxury-container {
+                padding-left: env(safe-area-inset-left);
+                padding-right: env(safe-area-inset-right);
+                padding-top: env(safe-area-inset-top);
+                padding-bottom: env(safe-area-inset-bottom);
+            }
+        }
+        
+        /* Loading Animation */
+        .loading-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+        
+        .loading-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 3px solid rgba(212, 175, 55, 0.3);
+            border-top: 3px solid var(--primary-gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
 <body>
-    <div class="app-wrapper">
-        <div class="app-header">
-            <h1><i class="fas fa-pray"></i> المسبحة الإلكترونية</h1>
-            <p>سبحان الله والحمد لله ولا إله إلا الله والله أكبر</p>
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+    </div>
+    
+    <div class="luxury-container">
+        <div class="luxury-header">
+            <div class="app-title">
+                <h1><i class="fas fa-gem"></i> Tasbih Pro</h1>
+                <p class="app-subtitle">مسبحة إلكترونية فاخرة</p>
+            </div>
         </div>
         
-        <div class="scroll-content" id="scrollArea">
-            <div class="counter-section">
+        <div class="main-content">
+            <div class="counter-display-section slide-in">
                 <div class="counter-label">
-                    <i class="fas fa-hashtag"></i>
+                    <i class="fas fa-crown"></i>
                     <span>عدد التسبيحات</span>
                 </div>
                 
-                <div class="counter-display" id="counter">0</div>
+                <div class="counter-number" id="counter">0</div>
                 
-                <div class="current-tasbih" id="currentTasbih">
+                <div class="current-dhikr" id="currentDhikr">
                     سبحان الله
                 </div>
                 
-                <div class="control-buttons">
-                    <button class="ctrl-btn count-btn" id="countBtn">
+                <div class="luxury-controls">
+                    <button class="luxury-btn btn-primary" id="countBtn">
                         <i class="fas fa-plus-circle"></i>
-                        <span>تسبيح (+1)</span>
+                        <span>تسبيح</span>
                     </button>
-                    <button class="ctrl-btn undo-btn" id="undoBtn">
-                        <i class="fas fa-undo"></i>
+                    <button class="luxury-btn btn-secondary" id="undoBtn">
+                        <i class="fas fa-undo-alt"></i>
                         <span>تراجع</span>
                     </button>
-                    <button class="ctrl-btn reset-btn" id="resetBtn">
-                        <i class="fas fa-redo"></i>
+                    <button class="luxury-btn btn-reset" id="resetBtn">
+                        <i class="fas fa-sync-alt"></i>
                         <span>إعادة تعيين</span>
                     </button>
                 </div>
             </div>
             
-            <div class="options-section">
-                <div class="options-title">
-                    <i class="fas fa-list-alt"></i>
-                    <span>أنواع التسبيح</span>
+            <div class="dhikr-types slide-in">
+                <div class="section-title">
+                    <i class="fas fa-star"></i>
+                    <span>أنواع الذكر</span>
                 </div>
                 
-                <div class="tasbih-grid" id="tasbihGrid">
-                    <!-- سيتم ملؤها بالجافاسكريبت -->
+                <div class="dhikr-grid" id="dhikrGrid">
+                    <!-- Will be populated by JavaScript -->
                 </div>
             </div>
             
-            <div class="stats-section">
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-value" id="completedCircles">0</div>
-                        <div class="stat-label">الدورات المكتملة</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value" id="currentCircle">0/33</div>
-                        <div class="stat-label">التسبيح الحالي</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value" id="totalCount">0</div>
-                        <div class="stat-label">المجموع الكلي</div>
-                    </div>
+            <div class="stats-section slide-in">
+                <div class="stat-card">
+                    <div class="stat-value" id="completedCircles">0</div>
+                    <div class="stat-label">دورات مكتملة</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="currentProgress">0/33</div>
+                    <div class="stat-label">التقدم الحالي</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="totalCount">0</div>
+                    <div class="stat-label">المجموع الكلي</div>
                 </div>
             </div>
         </div>
         
-        <div class="app-footer">
-            <p>المسبحة الإلكترونية - أداة مجانية للذكر والتسبيح</p>
+        <div class="luxury-footer">
+            <p class="footer-text">سبحان الله وبحمده سبحان الله العظيم</p>
         </div>
     </div>
 
     <script>
-        // === التهيئة ===
-        const state = {
-            count: 0,
-            totalCount: 0,
-            completedCircles: 0,
-            currentTasbih: 'سبحان الله',
-            tasbihHistory: [],
-            tasbihTypes: [
-                { name: 'سبحان الله', desc: 'التسبيح' },
-                { name: 'الحمد لله', desc: 'التحميد' },
-                { name: 'الله أكبر', desc: 'التكبير' },
-                { name: 'لا إله إلا الله', desc: 'التوحيد' },
-                { name: 'أستغفر الله', desc: 'الاستغفار' },
-                { name: 'لا حول ولا قوة إلا بالله', desc: 'الحوقلة' }
-            ]
-        };
-        
-        // === العناصر ===
-        const el = {
-            counter: document.getElementById('counter'),
-            currentTasbih: document.getElementById('currentTasbih'),
-            countBtn: document.getElementById('countBtn'),
-            undoBtn: document.getElementById('undoBtn'),
-            resetBtn: document.getElementById('resetBtn'),
-            completedCircles: document.getElementById('completedCircles'),
-            currentCircle: document.getElementById('currentCircle'),
-            totalCount: document.getElementById('totalCount'),
-            tasbihGrid: document.getElementById('tasbihGrid'),
-            scrollArea: document.getElementById('scrollArea')
-        };
-        
-        // === الدوال الأساسية ===
-        function initApp() {
-            loadState();
-            renderTasbihButtons();
-            updateDisplay();
-            setupEventListeners();
-            
-            // إصلاح السكرول للجوال
-            fixMobileScroll();
-        }
-        
-        function fixMobileScroll() {
-            // إضافة حدث touchmove للمناطق القابلة للتمرير
-            el.scrollArea.addEventListener('touchmove', function(e) {
-                // السماح بالتمرير الطبيعي
-            }, { passive: true });
-            
-            // منع التمرير في الجسم الرئيسي
-            document.body.addEventListener('touchmove', function(e) {
-                // فقط امنع التمرير إذا لم يكن في منطقة التمرير
-                if (!el.scrollArea.contains(e.target)) {
-                    e.preventDefault();
+        // === Professional App State ===
+        const TasbihApp = {
+            // State
+            state: {
+                count: 0,
+                totalCount: 0,
+                completedCircles: 0,
+                currentDhikr: 'سبحان الله',
+                dhikrHistory: [],
+                dhikrTypes: [
+                    { text: 'سبحان الله', desc: 'التسبيح', icon: 'fas fa-star' },
+                    { text: 'الحمد لله', desc: 'التحميد', icon: 'fas fa-heart' },
+                    { text: 'الله أكبر', desc: 'التكبير', icon: 'fas fa-sun' },
+                    { text: 'لا إله إلا الله', desc: 'التوحيد', icon: 'fas fa-certificate' },
+                    { text: 'أستغفر الله', desc: 'الاستغفار', icon: 'fas fa-hands-praying' },
+                    { text: 'لا حول ولا قوة إلا بالله', desc: 'الحوقلة', icon: 'fas fa-shield-alt' }
+                ],
+                settings: {
+                    sound: true,
+                    vibration: true,
+                    theme: 'luxury'
                 }
-            }, { passive: false });
+            },
             
-            // إصلاح خاص لـ iOS
-            if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
-                document.body.style.overflow = 'hidden';
-                document.documentElement.style.overflow = 'hidden';
-            }
-        }
-        
-        function renderTasbihButtons() {
-            el.tasbihGrid.innerHTML = '';
+            // Elements
+            elements: {},
             
-            state.tasbihTypes.forEach(tasbih => {
-                const button = document.createElement('div');
-                button.className = `tasbih-btn ${state.currentTasbih === tasbih.name ? 'active' : ''}`;
-                button.innerHTML = `
-                    <div class="tasbih-name">${tasbih.name}</div>
-                    <div class="tasbih-desc">${tasbih.desc}</div>
-                `;
+            // Audio Context
+            audioContext: null,
+            
+            // Initialization
+            init() {
+                this.cacheElements();
+                this.loadState();
+                this.renderDhikrOptions();
+                this.updateDisplay();
+                this.setupEventListeners();
+                this.setupAudio();
+                this.hideLoading();
+                this.setupScrollFix();
+            },
+            
+            // Cache DOM Elements
+            cacheElements() {
+                this.elements = {
+                    counter: document.getElementById('counter'),
+                    currentDhikr: document.getElementById('currentDhikr'),
+                    countBtn: document.getElementById('countBtn'),
+                    undoBtn: document.getElementById('undoBtn'),
+                    resetBtn: document.getElementById('resetBtn'),
+                    completedCircles: document.getElementById('completedCircles'),
+                    currentProgress: document.getElementById('currentProgress'),
+                    totalCount: document.getElementById('totalCount'),
+                    dhikrGrid: document.getElementById('dhikrGrid'),
+                    loadingOverlay: document.getElementById('loadingOverlay')
+                };
+            },
+            
+            // Setup Audio
+            setupAudio() {
+                try {
+                    this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                } catch (e) {
+                    console.log('Audio not supported');
+                }
+            },
+            
+            // Play Premium Sound
+            playSound(frequency = 523.25, duration = 0.2) {
+                if (!this.audioContext || !this.state.settings.sound) return;
                 
-                button.addEventListener('click', () => {
-                    state.currentTasbih = tasbih.name;
-                    renderTasbihButtons();
-                    updateDisplay();
-                    saveState();
+                try {
+                    const oscillator = this.audioContext.createOscillator();
+                    const gainNode = this.audioContext.createGain();
+                    
+                    oscillator.connect(gainNode);
+                    gainNode.connect(this.audioContext.destination);
+                    
+                    oscillator.frequency.value = frequency;
+                    oscillator.type = 'sine';
+                    
+                    gainNode.gain.setValueAtTime(0.1, this.audioContext.currentTime);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + duration);
+                    
+                    oscillator.start(this.audioContext.currentTime);
+                    oscillator.stop(this.audioContext.currentTime + duration);
+                } catch (e) {
+                    // Silent fail
+                }
+            },
+            
+            // Vibration
+            vibrate(pattern = [100, 50, 100]) {
+                if (navigator.vibrate && this.state.settings.vibration) {
+                    navigator.vibrate(pattern);
+                }
+            },
+            
+            // Increment Count
+            increment() {
+                this.state.count++;
+                this.state.totalCount++;
+                this.state.dhikrHistory.push(this.state.currentDhikr);
+                
+                // Pulse animation
+                this.elements.counter.classList.add('pulse-effect');
+                setTimeout(() => {
+                    this.elements.counter.classList.remove('pulse-effect');
+                }, 300);
+                
+                // Check for completed circle
+                if (this.state.count % 33 === 0) {
+                    this.state.completedCircles++;
+                    this.playSound(659.25, 0.5); // Higher pitch for completion
+                    this.vibrate([200, 100, 200]);
+                    
+                    // Glow effect for milestone
+                    this.elements.counter.classList.add('glow-effect');
+                    setTimeout(() => {
+                        this.elements.counter.classList.remove('glow-effect');
+                    }, 1000);
+                } else {
+                    this.playSound();
+                    this.vibrate([50]);
+                }
+                
+                this.updateDisplay();
+                this.saveState();
+            },
+            
+            // Undo
+            undo() {
+                if (this.state.count > 0) {
+                    this.state.count--;
+                    this.state.totalCount--;
+                    this.state.dhikrHistory.pop();
+                    
+                    if ((this.state.count + 1) % 33 === 0 && this.state.completedCircles > 0) {
+                        this.state.completedCircles--;
+                    }
+                    
+                    this.updateDisplay();
+                    this.saveState();
+                    this.playSound(392.00, 0.1); // Lower pitch for undo
+                }
+            },
+            
+            // Reset
+            reset() {
+                this.state.count = 0;
+                this.state.completedCircles = 0;
+                this.state.dhikrHistory = [];
+                
+                // Animation
+                this.elements.counter.classList.add('pulse-effect');
+                this.elements.currentDhikr.innerHTML = '<i class="fas fa-check-circle"></i> تم الإعادة بنجاح';
+                
+                setTimeout(() => {
+                    this.elements.counter.classList.remove('pulse-effect');
+                    this.elements.currentDhikr.textContent = this.state.currentDhikr;
+                }, 1000);
+                
+                this.updateDisplay();
+                this.saveState();
+                this.playSound(392.00, 0.3);
+                this.vibrate([150, 50, 150]);
+            },
+            
+            // Change Dhikr
+            changeDhikr(dhikrText) {
+                this.state.currentDhikr = dhikrText;
+                this.renderDhikrOptions();
+                this.updateDisplay();
+                this.saveState();
+                this.playSound(440.00, 0.1);
+            },
+            
+            // Render Dhikr Options
+            renderDhikrOptions() {
+                this.elements.dhikrGrid.innerHTML = '';
+                
+                this.state.dhikrTypes.forEach(dhikr => {
+                    const option = document.createElement('div');
+                    option.className = `dhikr-option ${this.state.currentDhikr === dhikr.text ? 'active' : ''}`;
+                    option.innerHTML = `
+                        <i class="${dhikr.icon}"></i>
+                        <div class="dhikr-text">${dhikr.text}</div>
+                        <div class="dhikr-desc">${dhikr.desc}</div>
+                    `;
+                    
+                    option.addEventListener('click', () => this.changeDhikr(dhikr.text));
+                    
+                    this.elements.dhikrGrid.appendChild(option);
+                });
+            },
+            
+            // Update Display
+            updateDisplay() {
+                this.elements.counter.textContent = this.state.count;
+                this.elements.currentDhikr.textContent = this.state.currentDhikr;
+                this.elements.completedCircles.textContent = this.state.completedCircles;
+                this.elements.currentProgress.textContent = `${this.state.count % 33}/33`;
+                this.elements.totalCount.textContent = this.state.totalCount;
+            },
+            
+            // Save State
+            saveState() {
+                const data = {
+                    count: this.state.count,
+                    totalCount: this.state.totalCount,
+                    completedCircles: this.state.completedCircles,
+                    currentDhikr: this.state.currentDhikr,
+                    dhikrHistory: this.state.dhikrHistory,
+                    settings: this.state.settings,
+                    timestamp: new Date().toISOString()
+                };
+                
+                localStorage.setItem('tasbihProState', JSON.stringify(data));
+            },
+            
+            // Load State
+            loadState() {
+                const saved = localStorage.getItem('tasbihProState');
+                if (saved) {
+                    try {
+                        const data = JSON.parse(saved);
+                        this.state.count = data.count || 0;
+                        this.state.totalCount = data.totalCount || 0;
+                        this.state.completedCircles = data.completedCircles || 0;
+                        this.state.currentDhikr = data.currentDhikr || 'سبحان الله';
+                        this.state.dhikrHistory = data.dhikrHistory || [];
+                        this.state.settings = data.settings || this.state.settings;
+                    } catch (e) {
+                        console.log('Error loading state');
+                    }
+                }
+            },
+            
+            // Setup Event Listeners
+            setupEventListeners() {
+                // Main buttons
+                this.elements.countBtn.addEventListener('click', () => this.increment());
+                this.elements.undoBtn.addEventListener('click', () => this.undo());
+                this.elements.resetBtn.addEventListener('click', () => this.reset());
+                
+                // Click on counter to increment
+                this.elements.counter.addEventListener('click', () => this.increment());
+                
+                // Keyboard shortcuts
+                document.addEventListener('keydown', (e) => {
+                    switch(e.code) {
+                        case 'Space':
+                        case 'Enter':
+                            e.preventDefault();
+                            this.increment();
+                            break;
+                        case 'KeyZ':
+                            if (e.ctrlKey || e.metaKey) {
+                                e.preventDefault();
+                                this.undo();
+                            }
+                            break;
+                        case 'KeyR':
+                            e.preventDefault();
+                            this.reset();
+                            break;
+                        case 'Digit1':
+                        case 'Digit2':
+                        case 'Digit3':
+                        case 'Digit4':
+                        case 'Digit5':
+                        case 'Digit6':
+                            const index = parseInt(e.code.replace('Digit', '')) - 1;
+                            if (this.state.dhikrTypes[index]) {
+                                this.changeDhikr(this.state.dhikrTypes[index].text);
+                            }
+                            break;
+                    }
                 });
                 
-                el.tasbihGrid.appendChild(button);
-            });
-        }
-        
-        function updateDisplay() {
-            el.counter.textContent = state.count;
-            el.currentTasbih.textContent = state.currentTasbih;
-            el.completedCircles.textContent = state.completedCircles;
-            el.currentCircle.textContent = `${state.count % 33}/33`;
-            el.totalCount.textContent = state.totalCount;
-        }
-        
-        function incrementCount() {
-            state.count++;
-            state.totalCount++;
-            state.tasbihHistory.push(state.currentTasbih);
-            
-            if (state.count % 33 === 0) {
-                state.completedCircles++;
-                playSound();
-            }
-            
-            // تأثير مرئي
-            el.counter.classList.add('pulse');
-            setTimeout(() => el.counter.classList.remove('pulse'), 300);
-            
-            updateDisplay();
-            saveState();
-        }
-        
-        function undoCount() {
-            if (state.count > 0) {
-                state.count--;
-                state.totalCount--;
-                state.tasbihHistory.pop();
-                
-                if ((state.count + 1) % 33 === 0 && state.completedCircles > 0) {
-                    state.completedCircles--;
-                }
-                
-                updateDisplay();
-                saveState();
-            }
-        }
-        
-        function resetCount() {
-            state.count = 0;
-            state.completedCircles = 0;
-            state.tasbihHistory = [];
-            
-            // تأثير الإعادة
-            el.counter.classList.add('reset-anim');
-            setTimeout(() => el.counter.classList.remove('reset-anim'), 500);
-            
-            el.currentTasbih.innerHTML = '<i class="fas fa-check-circle"></i> تم الإعادة';
-            setTimeout(() => {
-                el.currentTasbih.textContent = state.currentTasbih;
-            }, 1000);
-            
-            updateDisplay();
-            saveState();
-        }
-        
-        function playSound() {
-            try {
-                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                const oscillator = audioContext.createOscillator();
-                const gainNode = audioContext.createGain();
-                
-                oscillator.connect(gainNode);
-                gainNode.connect(audioContext.destination);
-                
-                oscillator.frequency.value = 523.25;
-                oscillator.type = 'sine';
-                
-                gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
-                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.2);
-                
-                oscillator.start(audioContext.currentTime);
-                oscillator.stop(audioContext.currentTime + 0.2);
-            } catch (e) {
-                // تجاهل الخطأ
-            }
-        }
-        
-        // === التخزين ===
-        function saveState() {
-            const data = {
-                count: state.count,
-                totalCount: state.totalCount,
-                completedCircles: state.completedCircles,
-                currentTasbih: state.currentTasbih,
-                tasbihHistory: state.tasbihHistory,
-                lastUpdated: new Date().toISOString()
-            };
-            
-            localStorage.setItem('tasbihState', JSON.stringify(data));
-        }
-        
-        function loadState() {
-            const saved = localStorage.getItem('tasbihState');
-            if (saved) {
-                try {
-                    const data = JSON.parse(saved);
-                    state.count = data.count || 0;
-                    state.totalCount = data.totalCount || 0;
-                    state.completedCircles = data.completedCircles || 0;
-                    state.currentTasbih = data.currentTasbih || 'سبحان الله';
-                    state.tasbihHistory = data.tasbihHistory || [];
-                } catch (e) {
-                    // إذا كان هناك خطأ في البيانات، ابدأ من جديد
-                    console.log('خطأ في تحميل البيانات، البدء من جديد');
-                }
-            }
-        }
-        
-        // === إعداد الأحداث ===
-        function setupEventListeners() {
-            // الأزرار الرئيسية
-            el.countBtn.addEventListener('click', incrementCount);
-            el.undoBtn.addEventListener('click', undoCount);
-            el.resetBtn.addEventListener('click', resetCount);
-            
-            // النقر على العداد للتسبيح
-            el.counter.addEventListener('click', incrementCount);
-            el.currentTasbih.addEventListener('click', incrementCount);
-            
-            // اختصارات لوحة المفاتيح
-            document.addEventListener('keydown', (e) => {
-                if (e.code === 'Space' || e.code === 'Enter') {
+                // Touch events for mobile
+                this.elements.countBtn.addEventListener('touchstart', (e) => {
                     e.preventDefault();
-                    incrementCount();
-                }
+                    this.increment();
+                }, { passive: false });
                 
-                if ((e.code === 'KeyZ' && (e.ctrlKey || e.metaKey)) || e.code === 'Backspace') {
-                    e.preventDefault();
-                    undoCount();
-                }
-                
-                if (e.code === 'KeyR') {
-                    e.preventDefault();
-                    resetCount();
-                }
-                
-                // أرقام 1-6 لاختيار التسبيح
-                if (e.code >= 'Digit1' && e.code <= 'Digit6') {
-                    const index = parseInt(e.code.replace('Digit', '')) - 1;
-                    if (state.tasbihTypes[index]) {
-                        state.currentTasbih = state.tasbihTypes[index].name;
-                        renderTasbihButtons();
-                        updateDisplay();
-                        saveState();
+                // Prevent unwanted scrolling
+                document.addEventListener('touchmove', (e) => {
+                    if (e.target.closest('.main-content')) {
+                        // Allow scrolling in main content
+                        return;
                     }
+                    // Prevent scrolling elsewhere
+                    e.preventDefault();
+                }, { passive: false });
+                
+                // Prevent zoom
+                document.addEventListener('gesturestart', (e) => {
+                    e.preventDefault();
+                });
+            },
+            
+            // Fix Scroll for Mobile
+            setupScrollFix() {
+                const content = document.querySelector('.main-content');
+                
+                content.addEventListener('touchstart', () => {
+                    content.style.overflowY = 'auto';
+                });
+                
+                content.addEventListener('touchend', () => {
+                    setTimeout(() => {
+                        content.style.overflowY = 'auto';
+                    }, 100);
+                });
+                
+                // iOS specific
+                if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+                    document.body.style.overflow = 'hidden';
+                    document.documentElement.style.overflow = 'hidden';
                 }
-            });
+            },
             
-            // منع السلوك الافتراضي في الأزرار (للتأكد من عمل السكرول)
-            const allButtons = document.querySelectorAll('button, .tasbih-btn, .ctrl-btn');
-            allButtons.forEach(btn => {
-                btn.addEventListener('touchstart', function(e) {
-                    // لا تفعل شيئاً - دع السكرول يعمل
-                }, { passive: true });
-                
-                btn.addEventListener('touchend', function(e) {
-                    // لا تفعل شيئاً - دع السكرول يعمل
-                }, { passive: true });
-            });
-            
-            // منع التكبير بالمسح
-            document.addEventListener('gesturestart', function(e) {
-                e.preventDefault();
-            });
-            
-            // إصلاحات للجوال
-            let lastTouchY = 0;
-            document.addEventListener('touchstart', function(e) {
-                lastTouchY = e.touches[0].clientY;
-            }, { passive: true });
-            
-            document.addEventListener('touchmove', function(e) {
-                // السماح بالتمرير فقط في منطقة التمرير
-                const touchY = e.touches[0].clientY;
-                const deltaY = touchY - lastTouchY;
-                
-                // إذا كنا في بداية أو نهاية السكرول، امنع التمرير خارج المنطقة
-                const scrollArea = el.scrollArea;
-                const isAtTop = scrollArea.scrollTop === 0;
-                const isAtBottom = scrollArea.scrollTop + scrollArea.clientHeight >= scrollArea.scrollHeight - 1;
-                
-                if ((isAtTop && deltaY > 0) || (isAtBottom && deltaY < 0)) {
-                    // امنع التمرير خارج المنطقة
-                    if (!scrollArea.contains(e.target)) {
-                        e.preventDefault();
-                    }
-                }
-                
-                lastTouchY = touchY;
-            }, { passive: false });
-        }
+            // Hide Loading
+            hideLoading() {
+                setTimeout(() => {
+                    this.elements.loadingOverlay.classList.add('hidden');
+                }, 800);
+            }
+        };
         
-        // === بدء التطبيق ===
-        document.addEventListener('DOMContentLoaded', initApp);
-        
-        // ضبط الارتفاع للجوالات
-        function setViewportHeight() {
-            const vh = window.innerHeight * 0.01;
-            document.documentElement.style.setProperty('--vh', `${vh}px`);
-            
-            const appWrapper = document.querySelector('.app-wrapper');
-            appWrapper.style.height = window.innerHeight + 'px';
-        }
-        
-        window.addEventListener('resize', setViewportHeight);
-        window.addEventListener('orientationchange', function() {
-            setTimeout(setViewportHeight, 100);
+        // Initialize the app
+        document.addEventListener('DOMContentLoaded', () => {
+            TasbihApp.init();
         });
         
-        // التهيئة الأولية
-        setTimeout(setViewportHeight, 100);
+        // Handle resize
+        window.addEventListener('resize', () => {
+            document.documentElement.style.height = `${window.innerHeight}px`;
+        });
+        
+        // Set initial height
+        window.dispatchEvent(new Event('resize'));
     </script>
 </body>
 </html>
