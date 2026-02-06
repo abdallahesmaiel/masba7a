@@ -5,45 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>المسبحة الإلكترونية | التسبيح الرقمي</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        /* إعادة تعيين CSS */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Cairo', 'Segoe UI', sans-serif;
             -webkit-tap-highlight-color: transparent;
-            touch-action: manipulation;
         }
         
         html, body {
             height: 100%;
             width: 100%;
             overflow: hidden;
-        }
-        
-        :root {
-            --primary: #0a5c36;
-            --gold: #ffd166;
-            --light-gold: #ffe8a3;
-            --accent: #2a8a2a;
-            --dark: #073421;
-            --light: #f8f8f8;
-            --bead-color-1: #8B4513;
-            --bead-color-2: #A0522D;
-            --bead-color-3: #CD853F;
-            --shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            --glow: 0 0 20px rgba(255, 209, 102, 0.5);
+            font-family: 'Cairo', sans-serif;
+            touch-action: manipulation;
         }
         
         body {
-            background: radial-gradient(circle at center, var(--dark) 0%, #000 100%);
-            color: var(--light);
-            height: 100vh;
+            background: linear-gradient(135deg, #0a5c36 0%, #073421 100%);
+            color: white;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
             position: fixed;
             top: 0;
             left: 0;
@@ -51,901 +36,514 @@
             bottom: 0;
         }
         
-        body::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
+        /* الحاوية الرئيسية */
+        .app-container {
             width: 100%;
             height: 100%;
-            background-image: 
-                radial-gradient(circle at 20% 30%, rgba(10, 92, 54, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(255, 209, 102, 0.1) 0%, transparent 50%);
-            z-index: -1;
-        }
-        
-        .container {
-            width: 100%;
-            height: 100vh;
-            max-height: 100vh;
+            max-width: 500px;
+            margin: 0 auto;
             display: flex;
             flex-direction: column;
-            background: rgba(15, 40, 25, 0.95);
-            backdrop-filter: blur(20px);
-            box-shadow: 
-                var(--shadow),
-                inset 0 0 50px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
             overflow: hidden;
-            border: 2px solid rgba(255, 209, 102, 0.2);
-            position: relative;
-            z-index: 1;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
         }
         
+        /* الهيدر */
         .header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
-            padding: 20px 15px;
+            background: linear-gradient(to right, #0a5c36, #1a6e1a);
+            padding: 15px;
             text-align: center;
-            border-bottom: 4px solid var(--gold);
+            border-bottom: 3px solid #ffd166;
             flex-shrink: 0;
-            position: relative;
-            overflow: hidden;
-            min-height: 110px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        
-        .header::before {
-            content: "";
-            font-family: "Font Awesome 6 Free";
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 3rem;
-            opacity: 0.1;
-            color: var(--gold);
-            transform: rotate(20deg);
-        }
-        
-        .header::after {
-            content: "";
-            font-family: "Font Awesome 6 Free";
-            position: absolute;
-            bottom: 10px;
-            left: 10px;
-            font-size: 3rem;
-            opacity: 0.1;
-            color: var(--gold);
-            transform: rotate(-15deg);
         }
         
         .header h1 {
-            font-size: 1.8rem;
-            margin-bottom: 8px;
-            color: var(--light);
-            text-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
-            font-weight: 800;
-            position: relative;
-            z-index: 2;
-            letter-spacing: 1px;
-        }
-        
-        .header h1 i {
-            color: var(--gold);
-            margin-left: 10px;
-            text-shadow: var(--glow);
+            font-size: 1.6rem;
+            margin-bottom: 5px;
+            color: white;
         }
         
         .header p {
-            font-size: 1rem;
+            font-size: 0.9rem;
             opacity: 0.9;
-            margin: 0 auto;
-            font-family: 'Amiri', serif;
-            line-height: 1.5;
-            padding: 0 10px;
         }
         
-        .main-content {
+        /* منطقة العداد الرئيسي */
+        .counter-area {
             flex: 1;
             display: flex;
             flex-direction: column;
-            overflow: hidden;
-            padding: 15px;
-            gap: 15px;
-        }
-        
-        .counter-display-section {
-            background: linear-gradient(145deg, rgba(10, 92, 54, 0.4), rgba(7, 52, 33, 0.4));
-            border-radius: 20px;
+            justify-content: center;
+            align-items: center;
             padding: 20px;
             text-align: center;
-            border: 2px solid rgba(255, 209, 102, 0.3);
-            box-shadow: 
-                inset 0 0 25px rgba(0, 0, 0, 0.3),
-                0 8px 25px rgba(0, 0, 0, 0.2);
-            flex-shrink: 0;
-            min-height: 180px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        
-        .counter-label {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            color: var(--light-gold);
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-        }
-        
-        .counter-label i {
-            color: var(--gold);
-            font-size: 1.5rem;
         }
         
         .counter-display {
             font-size: 4.5rem;
-            font-weight: 900;
-            color: var(--gold);
-            text-shadow: 
-                0 5px 20px rgba(0, 0, 0, 0.6),
-                0 0 30px rgba(255, 209, 102, 0.4);
+            font-weight: bold;
+            color: #ffd166;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
             margin: 10px 0;
-            direction: ltr;
-            font-family: 'Segoe UI', sans-serif;
-            transition: all 0.3s ease;
-            letter-spacing: 3px;
-            position: relative;
-            display: inline-block;
-            padding: 0 15px;
+            font-family: monospace;
+            letter-spacing: 2px;
         }
         
-        .counter-display::after {
-            content: "";
-            position: absolute;
-            bottom: -8px;
-            left: 20%;
-            width: 60%;
-            height: 4px;
-            background: linear-gradient(to right, transparent, var(--gold), transparent);
-            border-radius: 5px;
-            opacity: 0.6;
-        }
-        
-        .counter-display.animated {
-            transform: scale(1.08);
-            text-shadow: 
-                0 5px 25px rgba(0, 0, 0, 0.7),
-                0 0 40px rgba(255, 209, 102, 0.6);
-        }
-        
-        .current-tasbih {
-            font-size: 1.5rem;
-            color: #fff;
+        .tasbih-text {
+            font-size: 1.4rem;
             margin: 15px 0;
-            min-height: 50px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            min-height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
+            width: 90%;
+        }
+        
+        /* الأزرار الرئيسية */
+        .main-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            width: 90%;
+            margin: 10px auto;
+        }
+        
+        .main-btn {
             padding: 12px;
-            background: rgba(10, 92, 54, 0.4);
-            border-radius: 15px;
-            font-family: 'Scheherazade New', serif;
-            font-weight: 700;
-            border: 2px solid rgba(255, 209, 102, 0.2);
-            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .current-tasbih::before {
-            content: "";
-            font-family: "Font Awesome 6 Free";
-            position: absolute;
-            right: 10px;
-            font-size: 1.5rem;
-            opacity: 0.2;
-            color: var(--gold);
-        }
-        
-        .current-tasbih::after {
-            content: "";
-            font-family: "Font Awesome 6 Free";
-            position: absolute;
-            left: 10px;
-            font-size: 1.5rem;
-            opacity: 0.2;
-            color: var(--gold);
-        }
-        
-        .controls-section {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-            padding-bottom: 10px;
-        }
-        
-        .counter-controls {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            flex-shrink: 0;
-        }
-        
-        .btn {
-            padding: 18px 10px;
-            font-size: 1.1rem;
             border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 700;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: bold;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            height: 60px;
-        }
-        
-        .btn::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
-            z-index: -1;
-        }
-        
-        .btn:active {
-            transform: scale(0.98);
+            gap: 8px;
+            cursor: pointer;
             transition: transform 0.1s;
+            height: 55px;
         }
         
-        .btn-primary {
-            background: linear-gradient(135deg, var(--gold), #ffb347);
-            color: var(--dark);
-            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+        .main-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .count-btn {
             grid-column: span 2;
-            height: 70px;
+            background: #ffd166;
+            color: #0a5c36;
         }
         
-        .btn-secondary {
-            background: linear-gradient(135deg, var(--accent), #1e6e1e);
+        .undo-btn {
+            background: #4CAF50;
             color: white;
         }
         
-        .btn-reset {
-            background: linear-gradient(135deg, #d9534f, #c12e2a);
+        .reset-btn {
+            background: #f44336;
             color: white;
         }
         
-        .btn i {
-            font-size: 1.3rem;
-        }
-        
-        .btn span {
-            font-size: 1rem;
-        }
-        
+        /* خيارات التسبيح */
         .tasbih-options {
-            background: rgba(20, 60, 40, 0.7);
-            border-radius: 18px;
-            padding: 15px;
-            border: 2px solid rgba(255, 209, 102, 0.2);
-            box-shadow: 
-                inset 0 0 20px rgba(0, 0, 0, 0.3),
-                0 6px 20px rgba(0, 0, 0, 0.2);
-            flex-shrink: 0;
-        }
-        
-        .tasbih-options h3 {
-            margin-bottom: 15px;
-            color: var(--light-gold);
-            font-size: 1.3rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            justify-content: center;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-        }
-        
-        .tasbih-options h3 i {
-            color: var(--gold);
-        }
-        
-        .options-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            flex-shrink: 0;
+            max-height: 150px;
+            overflow-y: auto;
         }
         
-        .option-btn {
-            padding: 15px 8px;
-            background: linear-gradient(145deg, rgba(40, 100, 60, 0.7), rgba(20, 60, 40, 0.7));
-            border: 2px solid rgba(255, 209, 102, 0.3);
-            border-radius: 15px;
-            color: #fff;
+        .tasbih-option {
+            padding: 10px 5px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: white;
+            font-size: 0.85rem;
+            text-align: center;
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-            font-weight: 700;
+            transition: all 0.2s;
             display: flex;
             flex-direction: column;
+            justify-content: center;
             align-items: center;
-            gap: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            height: 75px;
+            min-height: 70px;
         }
         
-        .option-btn:active {
-            transform: scale(0.98);
+        .tasbih-option:active {
+            transform: scale(0.95);
         }
         
-        .option-btn.active {
-            background: linear-gradient(145deg, rgba(255, 209, 102, 0.3), rgba(255, 193, 69, 0.2));
-            border-color: var(--gold);
-            color: var(--light-gold);
-            box-shadow: 
-                0 5px 15px rgba(0, 0, 0, 0.4),
-                inset 0 0 15px rgba(255, 209, 102, 0.2),
-                0 0 15px rgba(255, 209, 102, 0.3);
+        .tasbih-option.active {
+            background: rgba(255, 209, 102, 0.3);
+            border-color: #ffd166;
+            color: #ffd166;
+        }
+        
+        .tasbih-name {
+            font-weight: bold;
+            margin-bottom: 3px;
         }
         
         .tasbih-desc {
-            font-size: 0.85rem;
-            opacity: 0.9;
-            font-family: 'Amiri', serif;
-            padding: 3px 10px;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 20px;
-            margin-top: 3px;
+            font-size: 0.75rem;
+            opacity: 0.8;
         }
         
-        .counter-stats {
+        /* الإحصائيات */
+        .stats {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 10px;
-            margin-top: 10px;
-            padding-top: 15px;
-            border-top: 2px solid rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.3);
             flex-shrink: 0;
         }
         
-        .stat-box {
+        .stat-item {
             text-align: center;
-            padding: 15px 10px;
-            background: linear-gradient(145deg, rgba(10, 92, 54, 0.4), rgba(7, 52, 33, 0.4));
-            border-radius: 15px;
-            border: 2px solid rgba(255, 209, 102, 0.2);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
         }
         
         .stat-value {
-            font-size: 1.8rem;
-            font-weight: 900;
-            color: var(--gold);
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ffd166;
             margin-bottom: 5px;
-            text-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
         }
         
         .stat-label {
-            font-size: 0.9rem;
-            opacity: 0.9;
-            color: var(--light-gold);
-            font-weight: 600;
-        }
-        
-        .instructions {
-            background: linear-gradient(145deg, rgba(10, 92, 54, 0.4), rgba(7, 52, 33, 0.4));
-            border-radius: 15px;
-            padding: 15px;
-            border-right: 6px solid var(--gold);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-            flex-shrink: 0;
-        }
-        
-        .instructions h4 {
-            color: var(--light-gold);
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .instructions ul {
-            padding-right: 20px;
-            list-style-type: none;
-        }
-        
-        .instructions li {
-            margin-bottom: 8px;
-            position: relative;
-            padding-right: 25px;
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-        
-        .instructions li::before {
-            content: "•";
-            color: var(--gold);
-            font-size: 1.5rem;
-            position: absolute;
-            right: 0;
-            top: -5px;
-        }
-        
-        .keyboard-shortcuts {
-            margin-top: 10px;
-            padding: 10px;
-            background: rgba(255, 209, 102, 0.1);
-            border-radius: 10px;
-            border: 1px solid rgba(255, 209, 102, 0.3);
             font-size: 0.8rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            justify-content: center;
+            opacity: 0.8;
         }
         
-        .shortcut {
-            padding: 5px 10px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
+        /* الفوتر */
         .footer {
+            padding: 10px;
             text-align: center;
-            padding: 15px;
-            background: rgba(5, 25, 15, 0.9);
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.85rem;
-            border-top: 2px solid rgba(255, 209, 102, 0.2);
-            font-family: 'Amiri', serif;
+            background: rgba(0, 0, 0, 0.5);
+            font-size: 0.8rem;
+            opacity: 0.8;
             flex-shrink: 0;
         }
         
-        .footer p {
-            margin-bottom: 5px;
-        }
-        
-        /* تأثيرات للزر الرئيسي */
+        /* التأثيرات */
         @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(255, 209, 102, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(255, 209, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 209, 102, 0); }
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
         
-        .pulse-animation {
-            animation: pulse 2s infinite;
+        .pulse {
+            animation: pulse 0.3s ease;
         }
         
-        /* تأثير عند إعادة التعيين */
-        @keyframes resetAnimation {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(0.95); opacity: 0.8; }
-            100% { transform: scale(1); opacity: 1; }
+        @keyframes resetAnim {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
         }
         
-        .reset-effect {
-            animation: resetAnimation 0.4s ease;
+        .reset-anim {
+            animation: resetAnim 0.5s ease;
         }
         
-        /* تأثيرات للعداد عند الوصول إلى 33 و 99 */
-        .milestone {
-            animation: milestoneEffect 0.8s ease;
-        }
-        
-        @keyframes milestoneEffect {
-            0% { transform: scale(1); color: var(--gold); }
-            25% { transform: scale(1.2); color: #fff; }
-            50% { transform: scale(1.1); color: var(--light-gold); }
-            75% { transform: scale(1.15); color: #fff; }
-            100% { transform: scale(1); color: var(--gold); }
-        }
-        
-        /* تصميم للأجهزة الأفقية */
-        @media (orientation: landscape) {
-            .container {
-                flex-direction: row;
-            }
-            
-            .header {
-                width: 200px;
-                min-height: 100%;
-                border-bottom: none;
-                border-right: 4px solid var(--gold);
-                padding: 20px 15px;
-            }
-            
-            .main-content {
-                flex-direction: column;
-                overflow-y: auto;
-            }
-            
-            .counter-display-section {
-                min-height: 150px;
-            }
-            
+        /* التجاوب */
+        @media (min-height: 700px) {
             .counter-display {
-                font-size: 3.5rem;
+                font-size: 5rem;
             }
             
-            .current-tasbih {
-                font-size: 1.3rem;
-                min-height: 45px;
-                padding: 10px;
+            .tasbih-text {
+                font-size: 1.6rem;
             }
             
-            .controls-section {
-                flex: 1;
-            }
-            
-            .counter-controls {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            
-            .btn-primary {
-                grid-column: span 3;
-            }
-            
-            .options-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            
-            .option-btn {
-                height: 70px;
-                padding: 12px 5px;
-            }
-            
-            .stat-value {
-                font-size: 1.5rem;
-            }
-        }
-        
-        /* تصميم للأجهزة الكبيرة */
-        @media (min-width: 768px) and (orientation: portrait) {
-            .header {
-                padding: 25px 20px;
-                min-height: 130px;
-            }
-            
-            .header h1 {
-                font-size: 2.2rem;
-            }
-            
-            .header p {
-                font-size: 1.2rem;
-            }
-            
-            .counter-display {
-                font-size: 5.5rem;
-            }
-            
-            .current-tasbih {
-                font-size: 1.8rem;
-                min-height: 60px;
-                padding: 15px;
-            }
-            
-            .btn {
-                height: 65px;
-                font-size: 1.2rem;
-            }
-            
-            .btn-primary {
-                height: 75px;
-            }
-            
-            .option-btn {
-                height: 85px;
-                padding: 18px 10px;
+            .main-btn {
+                height: 60px;
                 font-size: 1.1rem;
             }
             
-            .stat-value {
-                font-size: 2.2rem;
-            }
-            
-            .stat-label {
-                font-size: 1rem;
+            .tasbih-option {
+                min-height: 80px;
             }
         }
         
-        /* تثبيت الحجم لمنع التكبير/التصغير */
-        @media (max-width: 320px) {
+        @media (max-height: 600px) {
+            .header {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 1.4rem;
+            }
+            
             .counter-display {
                 font-size: 3.5rem;
             }
             
-            .current-tasbih {
-                font-size: 1.3rem;
+            .tasbih-text {
+                font-size: 1.2rem;
+                min-height: 50px;
+                padding: 8px 15px;
             }
             
-            .btn span {
+            .main-btn {
+                height: 50px;
+                padding: 10px;
                 font-size: 0.9rem;
             }
             
-            .option-btn {
-                height: 70px;
-                padding: 12px 5px;
-                font-size: 0.9rem;
+            .tasbih-options {
+                padding: 10px;
+                max-height: 120px;
+            }
+            
+            .tasbih-option {
+                min-height: 60px;
+                padding: 8px 3px;
+                font-size: 0.8rem;
+            }
+            
+            .stats {
+                padding: 10px;
             }
         }
         
-        /* إزالة تأثير التمرير السريع */
-        .no-swipe {
-            touch-action: pan-y pinch-zoom;
-            -webkit-user-drag: none;
-            user-select: none;
+        @media (max-width: 350px) {
+            .tasbih-options {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .main-buttons {
+                width: 95%;
+            }
+            
+            .tasbih-text {
+                width: 95%;
+            }
+        }
+        
+        /* منع التمرير في مناطق محددة */
+        .no-scroll {
+            -webkit-overflow-scrolling: touch;
+            overflow: auto;
+        }
+        
+        /* إصلاحات للآيفون */
+        @supports (-webkit-touch-callout: none) {
+            .app-container {
+                height: -webkit-fill-available;
+            }
+        }
+        
+        /* إخفاء شريط التمرير لكن السماح بالتمرير */
+        .tasbih-options::-webkit-scrollbar {
+            width: 3px;
+        }
+        
+        .tasbih-options::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+        }
+        
+        .tasbih-options::-webkit-scrollbar-thumb {
+            background: rgba(255, 209, 102, 0.5);
+            border-radius: 3px;
         }
     </style>
 </head>
 <body>
-    <div class="container no-swipe">
+    <div class="app-container">
         <div class="header">
-            <h1><i class="fas fa-praying-hands"></i> المسبحة الإلكترونية</h1>
-            <p>سبحان الله والحمد لله ولا إله إلا الله والله أكبر</p>
+            <h1><i class="fas fa-pray"></i> المسبحة الإلكترونية</h1>
+            <p>أداة بسيطة للتسبيح والذكر</p>
         </div>
         
-        <div class="main-content">
-            <div class="counter-display-section">
-                <div class="counter-label">
-                    <i class="fas fa-hashtag"></i>
-                    <span>عدد التسبيحات</span>
-                </div>
-                
-                <div class="counter-display" id="counter">0</div>
-                
-                <div class="current-tasbih" id="currentTasbih">
-                    اضغط على زر التسبيح للبدء
-                </div>
-            </div>
+        <div class="counter-area">
+            <div class="counter-display" id="counter">0</div>
+            <div class="tasbih-text" id="currentTasbih">سبحان الله</div>
             
-            <div class="controls-section">
-                <div class="counter-controls">
-                    <button class="btn btn-primary pulse-animation" id="countBtn">
-                        <i class="fas fa-plus-circle"></i>
-                        <span>تسبيح (+1)</span>
-                    </button>
-                    
-                    <button class="btn btn-secondary" id="undoBtn">
-                        <i class="fas fa-undo"></i>
-                        <span>تراجع (-1)</span>
-                    </button>
-                    
-                    <button class="btn btn-reset" id="resetBtn">
-                        <i class="fas fa-redo"></i>
-                        <span>إعادة تعيين</span>
-                    </button>
-                </div>
-                
-                <div class="tasbih-options">
-                    <h3><i class="fas fa-list-alt"></i> أنواع التسبيح</h3>
-                    
-                    <div class="options-grid">
-                        <button class="option-btn active" data-tasbih="سبحان الله" data-desc="التسبيح">
-                            <span>سبحان الله</span>
-                            <span class="tasbih-desc">التسبيح</span>
-                        </button>
-                        
-                        <button class="option-btn" data-tasbih="الحمد لله" data-desc="التحميد">
-                            <span>الحمد لله</span>
-                            <span class="tasbih-desc">التحميد</span>
-                        </button>
-                        
-                        <button class="option-btn" data-tasbih="الله أكبر" data-desc="التكبير">
-                            <span>الله أكبر</span>
-                            <span class="tasbih-desc">التكبير</span>
-                        </button>
-                        
-                        <button class="option-btn" data-tasbih="لا إله إلا الله" data-desc="التوحيد">
-                            <span>لا إله إلا الله</span>
-                            <span class="tasbih-desc">التوحيد</span>
-                        </button>
-                        
-                        <button class="option-btn" data-tasbih="أستغفر الله" data-desc="الاستغفار">
-                            <span>أستغفر الله</span>
-                            <span class="tasbih-desc">الاستغفار</span>
-                        </button>
-                        
-                        <button class="option-btn" data-tasbih="لا حول ولا قوة إلا بالله" data-desc="الحوقلة">
-                            <span>لا حول ولا قوة إلا بالله</span>
-                            <span class="tasbih-desc">الحوقلة</span>
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="counter-stats">
-                    <div class="stat-box">
-                        <div class="stat-value" id="completedCircles">0</div>
-                        <div class="stat-label">الدورات المكتملة</div>
-                    </div>
-                    
-                    <div class="stat-box">
-                        <div class="stat-value" id="currentCircle">0/33</div>
-                        <div class="stat-label">التسبيح الحالي</div>
-                    </div>
-                    
-                    <div class="stat-box">
-                        <div class="stat-value" id="totalCount">0</div>
-                        <div class="stat-label">المجموع الكلي</div>
-                    </div>
-                </div>
-                
-                <div class="instructions">
-                    <h4><i class="fas fa-info-circle"></i> طريقة الاستخدام</h4>
-                    <ul>
-                        <li>اختر نوع التسبيح من القائمة</li>
-                        <li>اضغط على زر "تسبيح" للعد</li>
-                        <li>كل 33 تسبيحة تكتمل دورة واحدة</li>
-                        <li>زر "تراجع" لتصحيح الخطأ</li>
-                        <li>زر "إعادة تعيين" يبدأ عد جديد</li>
-                    </ul>
-                </div>
+            <div class="main-buttons">
+                <button class="main-btn count-btn" id="countBtn">
+                    <i class="fas fa-plus-circle"></i>
+                    <span>تسبيح (+1)</span>
+                </button>
+                <button class="main-btn undo-btn" id="undoBtn">
+                    <i class="fas fa-undo"></i>
+                    <span>تراجع</span>
+                </button>
+                <button class="main-btn reset-btn" id="resetBtn">
+                    <i class="fas fa-redo"></i>
+                    <span>إعادة تعيين</span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="tasbih-options" id="tasbihOptions">
+            <!-- سيتم ملؤها بالجافاسكربت -->
+        </div>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-value" id="completedCircles">0</div>
+                <div class="stat-label">الدورات</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="currentCircle">0/33</div>
+                <div class="stat-label">التسبيح الحالي</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="totalCount">0</div>
+                <div class="stat-label">المجموع الكلي</div>
             </div>
         </div>
         
         <div class="footer">
-            <p>المسبحة الإلكترونية - أداة مجانية للذكر والتسبيح</p>
+            <p>الحمد لله رب العالمين</p>
         </div>
     </div>
 
     <script>
-        // العناصر الرئيسية
-        const counterElement = document.getElementById('counter');
-        const countBtn = document.getElementById('countBtn');
-        const undoBtn = document.getElementById('undoBtn');
-        const resetBtn = document.getElementById('resetBtn');
-        const currentTasbihElement = document.getElementById('currentTasbih');
-        const completedCirclesElement = document.getElementById('completedCircles');
-        const currentCircleElement = document.getElementById('currentCircle');
-        const totalCountElement = document.getElementById('totalCount');
-        const optionButtons = document.querySelectorAll('.option-btn');
+        // البيانات والتهيئة
+        const app = {
+            count: 0,
+            totalCount: 0,
+            completedCircles: 0,
+            currentTasbih: 'سبحان الله',
+            tasbihHistory: [],
+            tasbihTypes: [
+                { name: 'سبحان الله', desc: 'التسبيح' },
+                { name: 'الحمد لله', desc: 'التحميد' },
+                { name: 'الله أكبر', desc: 'التكبير' },
+                { name: 'لا إله إلا الله', desc: 'التوحيد' },
+                { name: 'أستغفر الله', desc: 'الاستغفار' },
+                { name: 'لا حول ولا قوة إلا بالله', desc: 'الحوقلة' }
+            ]
+        };
         
-        // البيانات
-        let count = 0;
-        let totalCount = 0;
-        let completedCircles = 0;
-        let currentTasbih = 'سبحان الله';
-        let tasbihHistory = [];
+        // العناصر
+        const elements = {
+            counter: document.getElementById('counter'),
+            currentTasbih: document.getElementById('currentTasbih'),
+            countBtn: document.getElementById('countBtn'),
+            undoBtn: document.getElementById('undoBtn'),
+            resetBtn: document.getElementById('resetBtn'),
+            completedCircles: document.getElementById('completedCircles'),
+            currentCircle: document.getElementById('currentCircle'),
+            totalCount: document.getElementById('totalCount'),
+            tasbihOptions: document.getElementById('tasbihOptions')
+        };
         
-        // تهيئة التطبيق
-        function initApp() {
-            // تحميل البيانات من التخزين المحلي إذا وجدت
-            const savedData = localStorage.getItem('tasbihAppData');
-            if (savedData) {
-                const data = JSON.parse(savedData);
-                count = data.count || 0;
-                totalCount = data.totalCount || 0;
-                completedCircles = data.completedCircles || 0;
-                currentTasbih = data.currentTasbih || 'سبحان الله';
-                tasbihHistory = data.tasbihHistory || [];
-            }
-            
+        // التهيئة
+        function init() {
+            loadFromStorage();
+            renderTasbihOptions();
             updateDisplay();
             setupEventListeners();
         }
         
-        // تحديث العرض
-        function updateDisplay() {
-            counterElement.textContent = count;
-            currentTasbihElement.textContent = currentTasbih;
-            completedCirclesElement.textContent = completedCircles;
-            currentCircleElement.textContent = `${count % 33}/33`;
-            totalCountElement.textContent = totalCount;
+        // عرض خيارات التسبيح
+        function renderTasbihOptions() {
+            elements.tasbihOptions.innerHTML = '';
             
-            // تأثير عند الوصول إلى 33
-            if (count % 33 === 0 && count !== 0) {
-                counterElement.classList.add('milestone');
-                setTimeout(() => {
-                    counterElement.classList.remove('milestone');
-                }, 800);
-            }
-            
-            // تأثير عند زيادة العداد
-            counterElement.classList.add('animated');
-            setTimeout(() => {
-                counterElement.classList.remove('animated');
-            }, 300);
-            
-            // تحديث الأزرار النشطة
-            optionButtons.forEach(btn => {
-                if (btn.dataset.tasbih === currentTasbih) {
-                    btn.classList.add('active');
-                } else {
-                    btn.classList.remove('active');
-                }
+            app.tasbihTypes.forEach((tasbih, index) => {
+                const option = document.createElement('div');
+                option.className = `tasbih-option ${tasbih.name === app.currentTasbih ? 'active' : ''}`;
+                option.innerHTML = `
+                    <div class="tasbih-name">${tasbih.name}</div>
+                    <div class="tasbih-desc">${tasbih.desc}</div>
+                `;
+                
+                option.addEventListener('click', () => selectTasbih(tasbih.name));
+                
+                elements.tasbihOptions.appendChild(option);
             });
-            
-            // حفظ البيانات في التخزين المحلي
-            saveData();
+        }
+        
+        // اختيار تسبيح
+        function selectTasbih(tasbihName) {
+            app.currentTasbih = tasbihName;
+            renderTasbihOptions();
+            updateDisplay();
+            saveToStorage();
         }
         
         // زيادة العداد
         function incrementCount() {
-            count++;
-            totalCount++;
-            tasbihHistory.push(currentTasbih);
+            app.count++;
+            app.totalCount++;
+            app.tasbihHistory.push(app.currentTasbih);
             
-            // التحقق من اكتمال الدورة
-            if (count % 33 === 0) {
-                completedCircles++;
-                playCompletionSound();
+            if (app.count % 33 === 0) {
+                app.completedCircles++;
+                playSound();
             }
             
+            elements.counter.classList.add('pulse');
+            setTimeout(() => {
+                elements.counter.classList.remove('pulse');
+            }, 300);
+            
             updateDisplay();
+            saveToStorage();
         }
         
-        // التراجع عن آخر تسبيحة
+        // التراجع
         function undoCount() {
-            if (count > 0) {
-                count--;
-                totalCount--;
-                tasbihHistory.pop();
+            if (app.count > 0) {
+                app.count--;
+                app.totalCount--;
+                app.tasbihHistory.pop();
                 
-                // تعديل الدورات المكتملة إذا لزم الأمر
-                if ((count + 1) % 33 === 0 && completedCircles > 0) {
-                    completedCircles--;
+                if ((app.count + 1) % 33 === 0 && app.completedCircles > 0) {
+                    app.completedCircles--;
                 }
                 
                 updateDisplay();
+                saveToStorage();
             }
         }
         
-        // إعادة التعيين (بدون رسالة تأكيد)
+        // إعادة التعيين
         function resetCount() {
-            // تأثير مرئي عند الإعادة
-            counterElement.classList.add('reset-effect');
-            document.querySelector('.counter-display-section').style.backgroundColor = 'rgba(217, 83, 79, 0.2)';
+            app.count = 0;
+            app.completedCircles = 0;
+            app.tasbihHistory = [];
             
+            elements.counter.classList.add('reset-anim');
             setTimeout(() => {
-                count = 0;
-                completedCircles = 0;
-                tasbihHistory = [];
-                
-                counterElement.classList.remove('reset-effect');
-                document.querySelector('.counter-display-section').style.backgroundColor = '';
-                updateDisplay();
-                
-                // رسالة تنبيه بسيطة
-                currentTasbihElement.innerHTML = '<i class="fas fa-check-circle"></i> تم إعادة التعيين';
-                setTimeout(() => {
-                    currentTasbihElement.textContent = currentTasbih;
-                }, 1500);
-            }, 400);
-        }
-        
-        // تغيير نوع التسبيح
-        function changeTasbih(tasbih) {
-            currentTasbih = tasbih;
+                elements.counter.classList.remove('reset-anim');
+            }, 500);
+            
+            elements.currentTasbih.innerHTML = '<i class="fas fa-check"></i> تم الإعادة';
+            setTimeout(() => {
+                elements.currentTasbih.textContent = app.currentTasbih;
+            }, 1000);
+            
             updateDisplay();
+            saveToStorage();
         }
         
-        // تشغيل صوت عند اكتمال الدورة
-        function playCompletionSound() {
+        // تحديث العرض
+        function updateDisplay() {
+            elements.counter.textContent = app.count;
+            elements.currentTasbih.textContent = app.currentTasbih;
+            elements.completedCircles.textContent = app.completedCircles;
+            elements.currentCircle.textContent = `${app.count % 33}/33`;
+            elements.totalCount.textContent = app.totalCount;
+        }
+        
+        // تشغيل صوت
+        function playSound() {
             try {
-                // صوت بسيط باستخدام Web Audio API
                 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
                 const oscillator = audioContext.createOscillator();
                 const gainNode = audioContext.createGain();
@@ -957,67 +555,60 @@
                 oscillator.type = 'sine';
                 
                 gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
-                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.2);
                 
                 oscillator.start(audioContext.currentTime);
-                oscillator.stop(audioContext.currentTime + 0.3);
+                oscillator.stop(audioContext.currentTime + 0.2);
             } catch (e) {
-                // تجاهل الأخطاء إذا لم يعمل الصوت
+                // تجاهل الخطأ إذا لم يعمل الصوت
             }
         }
         
-        // حفظ البيانات
-        function saveData() {
+        // التخزين المحلي
+        function saveToStorage() {
             const data = {
-                count,
-                totalCount,
-                completedCircles,
-                currentTasbih,
-                tasbihHistory,
-                timestamp: new Date().toISOString()
+                count: app.count,
+                totalCount: app.totalCount,
+                completedCircles: app.completedCircles,
+                currentTasbih: app.currentTasbih,
+                tasbihHistory: app.tasbihHistory
             };
             
-            localStorage.setItem('tasbihAppData', JSON.stringify(data));
+            localStorage.setItem('tasbihData', JSON.stringify(data));
         }
         
-        // إعداد مستمعي الأحداث
+        function loadFromStorage() {
+            const saved = localStorage.getItem('tasbihData');
+            if (saved) {
+                const data = JSON.parse(saved);
+                app.count = data.count || 0;
+                app.totalCount = data.totalCount || 0;
+                app.completedCircles = data.completedCircles || 0;
+                app.currentTasbih = data.currentTasbih || 'سبحان الله';
+                app.tasbihHistory = data.tasbihHistory || [];
+            }
+        }
+        
+        // إعداد الأحداث
         function setupEventListeners() {
-            // زر الزيادة
-            countBtn.addEventListener('click', incrementCount);
-            countBtn.addEventListener('touchstart', function(e) {
-                e.preventDefault();
-                incrementCount();
-            }, { passive: false });
+            // زر التسبيح
+            elements.countBtn.addEventListener('click', incrementCount);
             
             // زر التراجع
-            undoBtn.addEventListener('click', undoCount);
-            undoBtn.addEventListener('touchstart', function(e) {
-                e.preventDefault();
-                undoCount();
-            }, { passive: false });
+            elements.undoBtn.addEventListener('click', undoCount);
             
-            // زر إعادة التعيين
-            resetBtn.addEventListener('click', resetCount);
-            resetBtn.addEventListener('touchstart', function(e) {
-                e.preventDefault();
-                resetCount();
-            }, { passive: false });
+            // زر الإعادة
+            elements.resetBtn.addEventListener('click', resetCount);
             
-            // أزرار أنواع التسبيح
-            optionButtons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    changeTasbih(btn.dataset.tasbih);
-                });
-                
-                btn.addEventListener('touchstart', function(e) {
-                    e.preventDefault();
-                    changeTasbih(this.dataset.tasbih);
-                }, { passive: false });
-            });
+            // النقر على العداد للزيادة
+            elements.counter.addEventListener('click', incrementCount);
+            
+            // النقر على نص التسبيح للزيادة
+            elements.currentTasbih.addEventListener('click', incrementCount);
             
             // اختصارات لوحة المفاتيح
             document.addEventListener('keydown', (e) => {
-                if (e.code === 'Space') {
+                if (e.code === 'Space' || e.code === 'Enter') {
                     e.preventDefault();
                     incrementCount();
                 }
@@ -1032,60 +623,62 @@
                     resetCount();
                 }
                 
-                // الأرقام من 1 إلى 6 لاختيار نوع التسبيح
+                // أرقام 1-6 لاختيار التسبيح
                 if (e.code >= 'Digit1' && e.code <= 'Digit6') {
                     const index = parseInt(e.code.replace('Digit', '')) - 1;
-                    if (optionButtons[index]) {
-                        changeTasbih(optionButtons[index].dataset.tasbih);
+                    if (app.tasbihTypes[index]) {
+                        selectTasbih(app.tasbihTypes[index].name);
                     }
                 }
             });
             
-            // منع التمرير السريع
-            document.addEventListener('touchmove', function(e) {
-                if (e.target.closest('.counter-controls') || 
-                    e.target.closest('.tasbih-options') ||
-                    e.target.closest('.counter-display-section')) {
-                    e.preventDefault();
-                }
-            }, { passive: false });
+            // منع السلوك الافتراضي للمس على الأزرار
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(btn => {
+                btn.addEventListener('touchstart', function(e) {
+                    e.stopPropagation();
+                }, { passive: true });
+                
+                btn.addEventListener('touchend', function(e) {
+                    e.stopPropagation();
+                }, { passive: true });
+            });
             
-            // النقر على العداد للزيادة
-            counterElement.addEventListener('click', incrementCount);
-            counterElement.addEventListener('touchstart', function(e) {
-                e.preventDefault();
-                incrementCount();
-            }, { passive: false });
-            
-            // منع التكبير/التصغير في الهواتف
+            // منع التكبير بالمسح
             document.addEventListener('gesturestart', function(e) {
                 e.preventDefault();
             });
             
-            // إصلاح لمشكلة iOS Safari
-            document.addEventListener('touchstart', function() {}, { passive: true });
+            // إصلاح للآيفون
+            document.addEventListener('touchmove', function(e) {
+                if (e.scale !== 1) {
+                    e.preventDefault();
+                }
+            }, { passive: false });
         }
         
         // بدء التطبيق
-        document.addEventListener('DOMContentLoaded', initApp);
+        document.addEventListener('DOMContentLoaded', init);
         
-        // ضبط حجم العناصر عند تغيير حجم النافذة
-        window.addEventListener('resize', function() {
-            document.body.style.height = window.innerHeight + 'px';
-        });
-        
-        // ضبط الارتفاع الأولي
-        window.dispatchEvent(new Event('resize'));
-        
-        // إضافة تأثير دخول الصفحة
-        window.addEventListener('load', function() {
-            document.body.style.opacity = '0';
+        // ضبط الارتفاع للجوالات
+        function setAppHeight() {
+            const vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
             
-            setTimeout(function() {
-                document.body.style.transition = 'opacity 0.5s ease';
-                document.body.style.opacity = '1';
-            }, 100);
-        });
+            const appContainer = document.querySelector('.app-container');
+            appContainer.style.height = window.innerHeight + 'px';
+        }
+        
+        window.addEventListener('resize', setAppHeight);
+        window.addEventListener('orientationchange', setAppHeight);
+        
+        // استدعاء أولي
+        setTimeout(setAppHeight, 100);
+        
+        // منع التمرير التلقائي
+        document.addEventListener('scroll', function(e) {
+            e.preventDefault();
+        }, { passive: false });
     </script>
 </body>
 </html>
