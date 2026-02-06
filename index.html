@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>المسبحة الإلكترونية | التسبيح الرقمي</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
@@ -13,6 +13,13 @@
             box-sizing: border-box;
             font-family: 'Cairo', 'Segoe UI', sans-serif;
             -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+        
+        html, body {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
         }
         
         :root {
@@ -32,13 +39,16 @@
         body {
             background: radial-gradient(circle at center, var(--dark) 0%, #000 100%);
             color: var(--light);
-            min-height: 100vh;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 15px;
-            overflow-x: hidden;
-            position: relative;
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
         }
         
         body::before {
@@ -56,10 +66,12 @@
         
         .container {
             width: 100%;
-            max-width: 950px;
-            background: rgba(15, 40, 25, 0.9);
+            height: 100vh;
+            max-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: rgba(15, 40, 25, 0.95);
             backdrop-filter: blur(20px);
-            border-radius: 30px;
             box-shadow: 
                 var(--shadow),
                 inset 0 0 50px rgba(0, 0, 0, 0.3);
@@ -71,20 +83,25 @@
         
         .header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
-            padding: 30px;
+            padding: 20px 15px;
             text-align: center;
-            border-bottom: 5px solid var(--gold);
+            border-bottom: 4px solid var(--gold);
+            flex-shrink: 0;
             position: relative;
             overflow: hidden;
+            min-height: 110px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         
         .header::before {
             content: "";
             font-family: "Font Awesome 6 Free";
             position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 4rem;
+            top: 10px;
+            right: 10px;
+            font-size: 3rem;
             opacity: 0.1;
             color: var(--gold);
             transform: rotate(20deg);
@@ -94,17 +111,17 @@
             content: "";
             font-family: "Font Awesome 6 Free";
             position: absolute;
-            bottom: 15px;
-            left: 20px;
-            font-size: 4rem;
+            bottom: 10px;
+            left: 10px;
+            font-size: 3rem;
             opacity: 0.1;
             color: var(--gold);
             transform: rotate(-15deg);
         }
         
         .header h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
+            font-size: 1.8rem;
+            margin-bottom: 8px;
             color: var(--light);
             text-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
             font-weight: 800;
@@ -115,106 +132,112 @@
         
         .header h1 i {
             color: var(--gold);
-            margin-left: 15px;
+            margin-left: 10px;
             text-shadow: var(--glow);
         }
         
         .header p {
-            font-size: 1.3rem;
+            font-size: 1rem;
             opacity: 0.9;
-            max-width: 700px;
             margin: 0 auto;
             font-family: 'Amiri', serif;
-            line-height: 1.8;
+            line-height: 1.5;
+            padding: 0 10px;
         }
         
         .main-content {
-            padding: 35px;
+            flex: 1;
             display: flex;
             flex-direction: column;
-            gap: 35px;
+            overflow: hidden;
+            padding: 15px;
+            gap: 15px;
         }
         
-        .counter-section {
+        .counter-display-section {
             background: linear-gradient(145deg, rgba(10, 92, 54, 0.4), rgba(7, 52, 33, 0.4));
-            border-radius: 25px;
-            padding: 40px 30px;
+            border-radius: 20px;
+            padding: 20px;
             text-align: center;
             border: 2px solid rgba(255, 209, 102, 0.3);
             box-shadow: 
-                inset 0 0 30px rgba(0, 0, 0, 0.3),
-                0 10px 30px rgba(0, 0, 0, 0.2);
-            position: relative;
+                inset 0 0 25px rgba(0, 0, 0, 0.3),
+                0 8px 25px rgba(0, 0, 0, 0.2);
+            flex-shrink: 0;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         
         .counter-label {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
             color: var(--light-gold);
             font-weight: 700;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 15px;
+            gap: 10px;
             text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
         }
         
         .counter-label i {
             color: var(--gold);
-            font-size: 2.2rem;
+            font-size: 1.5rem;
         }
         
         .counter-display {
-            font-size: 8rem;
+            font-size: 4.5rem;
             font-weight: 900;
             color: var(--gold);
             text-shadow: 
                 0 5px 20px rgba(0, 0, 0, 0.6),
                 0 0 30px rgba(255, 209, 102, 0.4);
-            margin: 25px 0;
+            margin: 10px 0;
             direction: ltr;
             font-family: 'Segoe UI', sans-serif;
             transition: all 0.3s ease;
-            letter-spacing: 5px;
+            letter-spacing: 3px;
             position: relative;
             display: inline-block;
-            padding: 0 20px;
+            padding: 0 15px;
         }
         
         .counter-display::after {
             content: "";
             position: absolute;
-            bottom: -10px;
+            bottom: -8px;
             left: 20%;
             width: 60%;
-            height: 5px;
+            height: 4px;
             background: linear-gradient(to right, transparent, var(--gold), transparent);
             border-radius: 5px;
             opacity: 0.6;
         }
         
         .counter-display.animated {
-            transform: scale(1.1);
+            transform: scale(1.08);
             text-shadow: 
                 0 5px 25px rgba(0, 0, 0, 0.7),
                 0 0 40px rgba(255, 209, 102, 0.6);
         }
         
         .current-tasbih {
-            font-size: 2.2rem;
+            font-size: 1.5rem;
             color: #fff;
-            margin: 30px 0;
-            min-height: 70px;
+            margin: 15px 0;
+            min-height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 12px;
             background: rgba(10, 92, 54, 0.4);
-            border-radius: 20px;
+            border-radius: 15px;
             font-family: 'Scheherazade New', serif;
             font-weight: 700;
             border: 2px solid rgba(255, 209, 102, 0.2);
-            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3);
+            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.3);
             position: relative;
             overflow: hidden;
         }
@@ -223,8 +246,8 @@
             content: "";
             font-family: "Font Awesome 6 Free";
             position: absolute;
-            right: 15px;
-            font-size: 2rem;
+            right: 10px;
+            font-size: 1.5rem;
             opacity: 0.2;
             color: var(--gold);
         }
@@ -233,37 +256,46 @@
             content: "";
             font-family: "Font Awesome 6 Free";
             position: absolute;
-            left: 15px;
-            font-size: 2rem;
+            left: 10px;
+            font-size: 1.5rem;
             opacity: 0.2;
             color: var(--gold);
         }
         
-        .counter-controls {
+        .controls-section {
+            flex: 1;
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 30px;
+            flex-direction: column;
+            gap: 15px;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 10px;
+        }
+        
+        .counter-controls {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            flex-shrink: 0;
         }
         
         .btn {
-            padding: 22px 40px;
-            font-size: 1.3rem;
+            padding: 18px 10px;
+            font-size: 1.1rem;
             border: none;
-            border-radius: 60px;
+            border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
             font-weight: 700;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 15px;
-            min-width: 200px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            gap: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
             position: relative;
             overflow: hidden;
             z-index: 1;
+            height: 60px;
         }
         
         .btn::before {
@@ -277,13 +309,8 @@
             z-index: -1;
         }
         
-        .btn:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-        }
-        
         .btn:active {
-            transform: translateY(-2px);
+            transform: scale(0.98);
             transition: transform 0.1s;
         }
         
@@ -291,11 +318,8 @@
             background: linear-gradient(135deg, var(--gold), #ffb347);
             color: var(--dark);
             text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
-        }
-        
-        .btn-primary:hover {
-            background: linear-gradient(135deg, #ffc145, #ff9a1f);
-            box-shadow: 0 15px 35px rgba(255, 209, 102, 0.4);
+            grid-column: span 2;
+            height: 70px;
         }
         
         .btn-secondary {
@@ -303,42 +327,37 @@
             color: white;
         }
         
-        .btn-secondary:hover {
-            background: linear-gradient(135deg, #3a9a3a, #2a8a2a);
-            box-shadow: 0 15px 35px rgba(42, 138, 42, 0.4);
-        }
-        
         .btn-reset {
             background: linear-gradient(135deg, #d9534f, #c12e2a);
             color: white;
         }
         
-        .btn-reset:hover {
-            background: linear-gradient(135deg, #e57373, #d32f2f);
-            box-shadow: 0 15px 35px rgba(217, 83, 79, 0.4);
+        .btn i {
+            font-size: 1.3rem;
         }
         
-        .btn i {
-            font-size: 1.5rem;
+        .btn span {
+            font-size: 1rem;
         }
         
         .tasbih-options {
             background: rgba(20, 60, 40, 0.7);
-            border-radius: 25px;
-            padding: 30px;
+            border-radius: 18px;
+            padding: 15px;
             border: 2px solid rgba(255, 209, 102, 0.2);
             box-shadow: 
-                inset 0 0 25px rgba(0, 0, 0, 0.3),
-                0 10px 25px rgba(0, 0, 0, 0.2);
+                inset 0 0 20px rgba(0, 0, 0, 0.3),
+                0 6px 20px rgba(0, 0, 0, 0.2);
+            flex-shrink: 0;
         }
         
         .tasbih-options h3 {
-            margin-bottom: 25px;
+            margin-bottom: 15px;
             color: var(--light-gold);
-            font-size: 1.8rem;
+            font-size: 1.3rem;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 10px;
             justify-content: center;
             text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
         }
@@ -349,51 +368,33 @@
         
         .options-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
         }
         
         .option-btn {
-            padding: 22px 15px;
+            padding: 15px 8px;
             background: linear-gradient(145deg, rgba(40, 100, 60, 0.7), rgba(20, 60, 40, 0.7));
             border: 2px solid rgba(255, 209, 102, 0.3);
-            border-radius: 20px;
+            border-radius: 15px;
             color: #fff;
             cursor: pointer;
-            transition: all 0.4s ease;
-            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            font-size: 1rem;
             font-weight: 700;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            gap: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             position: relative;
             overflow: hidden;
             z-index: 1;
+            height: 75px;
         }
         
-        .option-btn::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(255, 209, 102, 0.1), transparent);
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        
-        .option-btn:hover {
-            transform: translateY(-5px);
-            border-color: var(--gold);
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 209, 102, 0.2);
-        }
-        
-        .option-btn:hover::before {
-            opacity: 1;
+        .option-btn:active {
+            transform: scale(0.98);
         }
         
         .option-btn.active {
@@ -401,212 +402,137 @@
             border-color: var(--gold);
             color: var(--light-gold);
             box-shadow: 
-                0 8px 20px rgba(0, 0, 0, 0.4),
-                inset 0 0 20px rgba(255, 209, 102, 0.2),
-                0 0 20px rgba(255, 209, 102, 0.3);
+                0 5px 15px rgba(0, 0, 0, 0.4),
+                inset 0 0 15px rgba(255, 209, 102, 0.2),
+                0 0 15px rgba(255, 209, 102, 0.3);
         }
         
         .tasbih-desc {
-            font-size: 1rem;
+            font-size: 0.85rem;
             opacity: 0.9;
             font-family: 'Amiri', serif;
-            padding: 5px 15px;
+            padding: 3px 10px;
             background: rgba(0, 0, 0, 0.2);
-            border-radius: 30px;
-            margin-top: 5px;
+            border-radius: 20px;
+            margin-top: 3px;
         }
         
         .counter-stats {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 25px;
-            margin-top: 30px;
-            padding-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+            padding-top: 15px;
             border-top: 2px solid rgba(255, 255, 255, 0.1);
+            flex-shrink: 0;
         }
         
         .stat-box {
             text-align: center;
-            padding: 25px 20px;
-            min-width: 180px;
+            padding: 15px 10px;
             background: linear-gradient(145deg, rgba(10, 92, 54, 0.4), rgba(7, 52, 33, 0.4));
-            border-radius: 20px;
+            border-radius: 15px;
             border: 2px solid rgba(255, 209, 102, 0.2);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .stat-box:hover {
-            transform: translateY(-5px);
-            border-color: rgba(255, 209, 102, 0.4);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         
         .stat-value {
-            font-size: 2.8rem;
+            font-size: 1.8rem;
             font-weight: 900;
             color: var(--gold);
-            margin-bottom: 8px;
+            margin-bottom: 5px;
             text-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
         }
         
         .stat-label {
-            font-size: 1.2rem;
+            font-size: 0.9rem;
             opacity: 0.9;
             color: var(--light-gold);
             font-weight: 600;
         }
         
-        .beads-section {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 25px;
-            padding: 25px;
-            background: rgba(10, 30, 20, 0.6);
-            border-radius: 20px;
-            border: 2px solid rgba(139, 69, 19, 0.4);
-        }
-        
-        .bead {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--bead-color-1), var(--bead-color-2));
-            position: relative;
-            box-shadow: 
-                inset 0 -5px 10px rgba(0, 0, 0, 0.5),
-                0 5px 10px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .bead::after {
-            content: "";
-            position: absolute;
-            top: 5px;
-            left: 5px;
-            width: 10px;
-            height: 10px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-        }
-        
-        .bead.active {
-            background: linear-gradient(135deg, var(--bead-color-3), var(--gold));
-            transform: scale(1.2);
-            box-shadow: 
-                inset 0 -5px 10px rgba(0, 0, 0, 0.5),
-                0 5px 15px rgba(255, 209, 102, 0.4);
-        }
-        
-        .bead-divider {
-            width: 45px;
-            height: 15px;
-            background: linear-gradient(to right, var(--bead-color-2), var(--bead-color-1));
-            border-radius: 10px;
-            position: relative;
-        }
-        
-        .bead-divider::before, .bead-divider::after {
-            content: "";
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: var(--gold);
-            border-radius: 50%;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-        
-        .bead-divider::before {
-            left: 5px;
-        }
-        
-        .bead-divider::after {
-            right: 5px;
-        }
-        
         .instructions {
             background: linear-gradient(145deg, rgba(10, 92, 54, 0.4), rgba(7, 52, 33, 0.4));
-            border-radius: 20px;
-            padding: 25px;
-            margin-top: 20px;
-            border-right: 8px solid var(--gold);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            padding: 15px;
+            border-right: 6px solid var(--gold);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            flex-shrink: 0;
         }
         
         .instructions h4 {
             color: var(--light-gold);
-            margin-bottom: 15px;
-            font-size: 1.5rem;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 10px;
         }
         
         .instructions ul {
-            padding-right: 25px;
+            padding-right: 20px;
             list-style-type: none;
         }
         
         .instructions li {
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             position: relative;
-            padding-right: 35px;
-            font-size: 1.1rem;
-            line-height: 1.7;
+            padding-right: 25px;
+            font-size: 0.9rem;
+            line-height: 1.5;
         }
         
         .instructions li::before {
-            content: "";
-            font-family: "Font Awesome 6 Free";
+            content: "•";
             color: var(--gold);
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             position: absolute;
             right: 0;
-            top: 2px;
+            top: -5px;
         }
         
         .keyboard-shortcuts {
-            margin-top: 20px;
-            padding: 15px;
+            margin-top: 10px;
+            padding: 10px;
             background: rgba(255, 209, 102, 0.1);
-            border-radius: 15px;
+            border-radius: 10px;
             border: 1px solid rgba(255, 209, 102, 0.3);
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 8px;
             justify-content: center;
         }
         
         .shortcut {
-            padding: 8px 15px;
+            padding: 5px 10px;
             background: rgba(0, 0, 0, 0.3);
-            border-radius: 10px;
+            border-radius: 8px;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .footer {
             text-align: center;
-            padding: 30px;
+            padding: 15px;
             background: rgba(5, 25, 15, 0.9);
             color: rgba(255, 255, 255, 0.7);
-            font-size: 1rem;
+            font-size: 0.85rem;
             border-top: 2px solid rgba(255, 209, 102, 0.2);
             font-family: 'Amiri', serif;
+            flex-shrink: 0;
         }
         
         .footer p {
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
         
         /* تأثيرات للزر الرئيسي */
         @keyframes pulse {
             0% { box-shadow: 0 0 0 0 rgba(255, 209, 102, 0.7); }
-            70% { box-shadow: 0 0 0 20px rgba(255, 209, 102, 0); }
+            70% { box-shadow: 0 0 0 15px rgba(255, 209, 102, 0); }
             100% { box-shadow: 0 0 0 0 rgba(255, 209, 102, 0); }
         }
         
@@ -617,34 +543,91 @@
         /* تأثير عند إعادة التعيين */
         @keyframes resetAnimation {
             0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(0.8); opacity: 0.5; }
+            50% { transform: scale(0.95); opacity: 0.8; }
             100% { transform: scale(1); opacity: 1; }
         }
         
         .reset-effect {
-            animation: resetAnimation 0.5s ease;
+            animation: resetAnimation 0.4s ease;
         }
         
-        /* تصميم متجاوب */
-        @media (max-width: 992px) {
-            .header h1 {
-                font-size: 2.5rem;
+        /* تأثيرات للعداد عند الوصول إلى 33 و 99 */
+        .milestone {
+            animation: milestoneEffect 0.8s ease;
+        }
+        
+        @keyframes milestoneEffect {
+            0% { transform: scale(1); color: var(--gold); }
+            25% { transform: scale(1.2); color: #fff; }
+            50% { transform: scale(1.1); color: var(--light-gold); }
+            75% { transform: scale(1.15); color: #fff; }
+            100% { transform: scale(1); color: var(--gold); }
+        }
+        
+        /* تصميم للأجهزة الأفقية */
+        @media (orientation: landscape) {
+            .container {
+                flex-direction: row;
+            }
+            
+            .header {
+                width: 200px;
+                min-height: 100%;
+                border-bottom: none;
+                border-right: 4px solid var(--gold);
+                padding: 20px 15px;
+            }
+            
+            .main-content {
+                flex-direction: column;
+                overflow-y: auto;
+            }
+            
+            .counter-display-section {
+                min-height: 150px;
             }
             
             .counter-display {
-                font-size: 6rem;
+                font-size: 3.5rem;
             }
             
-            .btn {
-                padding: 20px 30px;
-                font-size: 1.2rem;
-                min-width: 180px;
+            .current-tasbih {
+                font-size: 1.3rem;
+                min-height: 45px;
+                padding: 10px;
+            }
+            
+            .controls-section {
+                flex: 1;
+            }
+            
+            .counter-controls {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .btn-primary {
+                grid-column: span 3;
+            }
+            
+            .options-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .option-btn {
+                height: 70px;
+                padding: 12px 5px;
+            }
+            
+            .stat-value {
+                font-size: 1.5rem;
             }
         }
         
-        @media (max-width: 768px) {
+        /* تصميم للأجهزة الكبيرة */
+        @media (min-width: 768px) and (orientation: portrait) {
             .header {
                 padding: 25px 20px;
+                min-height: 130px;
             }
             
             .header h1 {
@@ -652,149 +635,81 @@
             }
             
             .header p {
-                font-size: 1.1rem;
-            }
-            
-            .main-content {
-                padding: 25px 20px;
-                gap: 25px;
+                font-size: 1.2rem;
             }
             
             .counter-display {
-                font-size: 5rem;
+                font-size: 5.5rem;
             }
             
             .current-tasbih {
                 font-size: 1.8rem;
+                min-height: 60px;
                 padding: 15px;
             }
             
             .btn {
-                padding: 18px 25px;
-                font-size: 1.1rem;
-                min-width: 160px;
+                height: 65px;
+                font-size: 1.2rem;
             }
             
-            .options-grid {
-                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            .btn-primary {
+                height: 75px;
             }
             
             .option-btn {
+                height: 85px;
                 padding: 18px 10px;
                 font-size: 1.1rem;
-            }
-            
-            .stat-box {
-                min-width: 150px;
-                padding: 20px 15px;
             }
             
             .stat-value {
                 font-size: 2.2rem;
             }
             
-            .bead {
-                width: 30px;
-                height: 30px;
+            .stat-label {
+                font-size: 1rem;
             }
         }
         
-        @media (max-width: 576px) {
-            .header h1 {
-                font-size: 1.8rem;
-            }
-            
+        /* تثبيت الحجم لمنع التكبير/التصغير */
+        @media (max-width: 320px) {
             .counter-display {
-                font-size: 4rem;
+                font-size: 3.5rem;
             }
             
             .current-tasbih {
-                font-size: 1.5rem;
-                min-height: 60px;
+                font-size: 1.3rem;
             }
             
-            .btn {
-                padding: 16px 20px;
-                font-size: 1rem;
-                min-width: 140px;
+            .btn span {
+                font-size: 0.9rem;
             }
             
-            .counter-controls {
-                flex-direction: column;
-                align-items: center;
-                gap: 15px;
-            }
-            
-            .btn {
-                width: 100%;
-                max-width: 300px;
-            }
-            
-            .options-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .counter-stats {
-                flex-direction: column;
-                align-items: center;
-                gap: 15px;
-            }
-            
-            .stat-box {
-                width: 100%;
-                max-width: 300px;
-            }
-            
-            .beads-section {
-                padding: 15px;
-                gap: 10px;
-            }
-            
-            .bead {
-                width: 25px;
-                height: 25px;
-            }
-            
-            .bead-divider {
-                width: 35px;
-                height: 12px;
+            .option-btn {
+                height: 70px;
+                padding: 12px 5px;
+                font-size: 0.9rem;
             }
         }
         
-        /* تأثيرات للعداد عند الوصول إلى 33 و 99 */
-        .milestone {
-            animation: milestoneEffect 1s ease;
-        }
-        
-        @keyframes milestoneEffect {
-            0% { transform: scale(1); color: var(--gold); }
-            25% { transform: scale(1.3); color: #fff; }
-            50% { transform: scale(1.1); color: var(--light-gold); }
-            75% { transform: scale(1.2); color: #fff; }
-            100% { transform: scale(1); color: var(--gold); }
-        }
-        
-        /* تأثير حبات المسبحة */
-        .bead-highlight {
-            animation: beadHighlight 0.5s ease;
-        }
-        
-        @keyframes beadHighlight {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.4); box-shadow: 0 0 20px var(--gold); }
-            100% { transform: scale(1.2); }
+        /* إزالة تأثير التمرير السريع */
+        .no-swipe {
+            touch-action: pan-y pinch-zoom;
+            -webkit-user-drag: none;
+            user-select: none;
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container no-swipe">
         <div class="header">
             <h1><i class="fas fa-praying-hands"></i> المسبحة الإلكترونية</h1>
-            <p>سبحان الله والحمد لله ولا إله إلا الله والله أكبر ولا حول ولا قوة إلا بالله</p>
+            <p>سبحان الله والحمد لله ولا إله إلا الله والله أكبر</p>
         </div>
         
         <div class="main-content">
-            <div class="counter-section">
+            <div class="counter-display-section">
                 <div class="counter-label">
                     <i class="fas fa-hashtag"></i>
                     <span>عدد التسبيحات</span>
@@ -803,13 +718,11 @@
                 <div class="counter-display" id="counter">0</div>
                 
                 <div class="current-tasbih" id="currentTasbih">
-                    اضغط على زر التسبيح أو المس الشاشة للبدء
+                    اضغط على زر التسبيح للبدء
                 </div>
-                
-                <div class="beads-section" id="beadsContainer">
-                    <!-- سيتم إنشاء حبات المسبحة ديناميكياً -->
-                </div>
-                
+            </div>
+            
+            <div class="controls-section">
                 <div class="counter-controls">
                     <button class="btn btn-primary pulse-animation" id="countBtn">
                         <i class="fas fa-plus-circle"></i>
@@ -826,81 +739,75 @@
                         <span>إعادة تعيين</span>
                     </button>
                 </div>
-            </div>
-            
-            <div class="tasbih-options">
-                <h3><i class="fas fa-list-alt"></i> أنواع التسبيح</h3>
                 
-                <div class="options-grid">
-                    <button class="option-btn active" data-tasbih="سبحان الله" data-desc="التسبيح">
-                        <span>سبحان الله</span>
-                        <span class="tasbih-desc">التسبيح</span>
-                    </button>
+                <div class="tasbih-options">
+                    <h3><i class="fas fa-list-alt"></i> أنواع التسبيح</h3>
                     
-                    <button class="option-btn" data-tasbih="الحمد لله" data-desc="التحميد">
-                        <span>الحمد لله</span>
-                        <span class="tasbih-desc">التحميد</span>
-                    </button>
-                    
-                    <button class="option-btn" data-tasbih="الله أكبر" data-desc="التكبير">
-                        <span>الله أكبر</span>
-                        <span class="tasbih-desc">التكبير</span>
-                    </button>
-                    
-                    <button class="option-btn" data-tasbih="لا إله إلا الله" data-desc="التوحيد">
-                        <span>لا إله إلا الله</span>
-                        <span class="tasbih-desc">التوحيد</span>
-                    </button>
-                    
-                    <button class="option-btn" data-tasbih="أستغفر الله" data-desc="الاستغفار">
-                        <span>أستغفر الله</span>
-                        <span class="tasbih-desc">الاستغفار</span>
-                    </button>
-                    
-                    <button class="option-btn" data-tasbih="لا حول ولا قوة إلا بالله" data-desc="الحوقلة">
-                        <span>لا حول ولا قوة إلا بالله</span>
-                        <span class="tasbih-desc">الحوقلة</span>
-                    </button>
-                </div>
-            </div>
-            
-            <div class="counter-stats">
-                <div class="stat-box">
-                    <div class="stat-value" id="completedCircles">0</div>
-                    <div class="stat-label">الدورات المكتملة</div>
+                    <div class="options-grid">
+                        <button class="option-btn active" data-tasbih="سبحان الله" data-desc="التسبيح">
+                            <span>سبحان الله</span>
+                            <span class="tasbih-desc">التسبيح</span>
+                        </button>
+                        
+                        <button class="option-btn" data-tasbih="الحمد لله" data-desc="التحميد">
+                            <span>الحمد لله</span>
+                            <span class="tasbih-desc">التحميد</span>
+                        </button>
+                        
+                        <button class="option-btn" data-tasbih="الله أكبر" data-desc="التكبير">
+                            <span>الله أكبر</span>
+                            <span class="tasbih-desc">التكبير</span>
+                        </button>
+                        
+                        <button class="option-btn" data-tasbih="لا إله إلا الله" data-desc="التوحيد">
+                            <span>لا إله إلا الله</span>
+                            <span class="tasbih-desc">التوحيد</span>
+                        </button>
+                        
+                        <button class="option-btn" data-tasbih="أستغفر الله" data-desc="الاستغفار">
+                            <span>أستغفر الله</span>
+                            <span class="tasbih-desc">الاستغفار</span>
+                        </button>
+                        
+                        <button class="option-btn" data-tasbih="لا حول ولا قوة إلا بالله" data-desc="الحوقلة">
+                            <span>لا حول ولا قوة إلا بالله</span>
+                            <span class="tasbih-desc">الحوقلة</span>
+                        </button>
+                    </div>
                 </div>
                 
-                <div class="stat-box">
-                    <div class="stat-value" id="currentCircle">0/33</div>
-                    <div class="stat-label">التسبيح الحالي</div>
+                <div class="counter-stats">
+                    <div class="stat-box">
+                        <div class="stat-value" id="completedCircles">0</div>
+                        <div class="stat-label">الدورات المكتملة</div>
+                    </div>
+                    
+                    <div class="stat-box">
+                        <div class="stat-value" id="currentCircle">0/33</div>
+                        <div class="stat-label">التسبيح الحالي</div>
+                    </div>
+                    
+                    <div class="stat-box">
+                        <div class="stat-value" id="totalCount">0</div>
+                        <div class="stat-label">المجموع الكلي</div>
+                    </div>
                 </div>
                 
-                <div class="stat-box">
-                    <div class="stat-value" id="totalCount">0</div>
-                    <div class="stat-label">المجموع الكلي</div>
-                </div>
-            </div>
-            
-            <div class="instructions">
-                <h4><i class="fas fa-info-circle"></i> طريقة الاستخدام</h4>
-                <ul>
-                    <li>اختر نوع التسبيح من القائمة أعلاه</li>
-                    <li>اضغط على زر "تسبيح" أو المس الشاشة أو استخدم مفتاح المسافة للعد</li>
-                    <li>كل 33 تسبيحة تكتمل دورة واحدة (مثل المسبحة العادية)</li>
-                    <li>استخدم زر "تراجع" لتصحيح الخطأ</li>
-                    <li>استخدم زر "إعادة تعيين" لبدء عد جديد (سيتم التعيين مباشرة بدون تأكيد)</li>
-                </ul>
-                <div class="keyboard-shortcuts">
-                    <div class="shortcut"><i class="fas fa-space-awesome"></i> زر المسافة: تسبيح</div>
-                    <div class="shortcut"><i class="fas fa-keyboard"></i> Z للتراجع</div>
-                    <div class="shortcut"><i class="fas fa-keyboard"></i> R لإعادة التعيين</div>
+                <div class="instructions">
+                    <h4><i class="fas fa-info-circle"></i> طريقة الاستخدام</h4>
+                    <ul>
+                        <li>اختر نوع التسبيح من القائمة</li>
+                        <li>اضغط على زر "تسبيح" للعد</li>
+                        <li>كل 33 تسبيحة تكتمل دورة واحدة</li>
+                        <li>زر "تراجع" لتصحيح الخطأ</li>
+                        <li>زر "إعادة تعيين" يبدأ عد جديد</li>
+                    </ul>
                 </div>
             </div>
         </div>
         
         <div class="footer">
-            <p>المسبحة الإلكترونية - أداة مجانية لمساعدة المسلمين على الذكر والتسبيح</p>
-            <p>سبحان الله وبحمده سبحان الله العظيم</p>
+            <p>المسبحة الإلكترونية - أداة مجانية للذكر والتسبيح</p>
         </div>
     </div>
 
@@ -915,77 +822,29 @@
         const currentCircleElement = document.getElementById('currentCircle');
         const totalCountElement = document.getElementById('totalCount');
         const optionButtons = document.querySelectorAll('.option-btn');
-        const beadsContainer = document.getElementById('beadsContainer');
         
         // البيانات
         let count = 0;
         let totalCount = 0;
-        let currentCircle = 0;
         let completedCircles = 0;
         let currentTasbih = 'سبحان الله';
         let tasbihHistory = [];
-        let beads = [];
         
         // تهيئة التطبيق
         function initApp() {
             // تحميل البيانات من التخزين المحلي إذا وجدت
-            const savedData = localStorage.getItem('beautifulTasbih');
+            const savedData = localStorage.getItem('tasbihAppData');
             if (savedData) {
                 const data = JSON.parse(savedData);
                 count = data.count || 0;
                 totalCount = data.totalCount || 0;
                 completedCircles = data.completedCircles || 0;
-                currentCircle = data.currentCircle || 0;
                 currentTasbih = data.currentTasbih || 'سبحان الله';
                 tasbihHistory = data.tasbihHistory || [];
             }
             
-            createBeads();
             updateDisplay();
             setupEventListeners();
-        }
-        
-        // إنشاء حبات المسبحة
-        function createBeads() {
-            beadsContainer.innerHTML = '';
-            beads = [];
-            
-            // إنشاء 33 حبة للمسبحة (كما في المسبحة العادية)
-            for (let i = 0; i < 33; i++) {
-                const bead = document.createElement('div');
-                bead.className = 'bead';
-                bead.dataset.index = i;
-                beadsContainer.appendChild(bead);
-                beads.push(bead);
-                
-                // إضافة فواصل بعد كل 11 حبة
-                if (i === 10 || i === 21) {
-                    const divider = document.createElement('div');
-                    divider.className = 'bead-divider';
-                    beadsContainer.appendChild(divider);
-                }
-            }
-            
-            updateBeads();
-        }
-        
-        // تحديث حبات المسبحة
-        function updateBeads() {
-            beads.forEach((bead, index) => {
-                if (index < (count % 33)) {
-                    bead.classList.add('active');
-                    
-                    // تأثير خاص للحبة الأخيرة
-                    if (index === (count % 33) - 1) {
-                        bead.classList.add('bead-highlight');
-                        setTimeout(() => {
-                            bead.classList.remove('bead-highlight');
-                        }, 500);
-                    }
-                } else {
-                    bead.classList.remove('active');
-                }
-            });
         }
         
         // تحديث العرض
@@ -996,12 +855,12 @@
             currentCircleElement.textContent = `${count % 33}/33`;
             totalCountElement.textContent = totalCount;
             
-            // تأثير عند الوصول إلى 33 أو 99
+            // تأثير عند الوصول إلى 33
             if (count % 33 === 0 && count !== 0) {
                 counterElement.classList.add('milestone');
                 setTimeout(() => {
                     counterElement.classList.remove('milestone');
-                }, 1000);
+                }, 800);
             }
             
             // تأثير عند زيادة العداد
@@ -1019,9 +878,6 @@
                 }
             });
             
-            // تحديث حبات المسبحة
-            updateBeads();
-            
             // حفظ البيانات في التخزين المحلي
             saveData();
         }
@@ -1035,14 +891,7 @@
             // التحقق من اكتمال الدورة
             if (count % 33 === 0) {
                 completedCircles++;
-                // تشغيل صوت تنبيه خفيف عند اكتمال الدورة
                 playCompletionSound();
-                
-                // تأثير خاص عند اكتمال الدورة
-                counterElement.style.color = '#fff';
-                setTimeout(() => {
-                    counterElement.style.color = '';
-                }, 500);
             }
             
             updateDisplay();
@@ -1068,24 +917,23 @@
         function resetCount() {
             // تأثير مرئي عند الإعادة
             counterElement.classList.add('reset-effect');
-            document.querySelector('.counter-section').style.backgroundColor = 'rgba(217, 83, 79, 0.2)';
+            document.querySelector('.counter-display-section').style.backgroundColor = 'rgba(217, 83, 79, 0.2)';
             
             setTimeout(() => {
                 count = 0;
-                currentCircle = 0;
                 completedCircles = 0;
                 tasbihHistory = [];
                 
                 counterElement.classList.remove('reset-effect');
-                document.querySelector('.counter-section').style.backgroundColor = '';
+                document.querySelector('.counter-display-section').style.backgroundColor = '';
                 updateDisplay();
                 
                 // رسالة تنبيه بسيطة
-                currentTasbihElement.innerHTML = '<i class="fas fa-check-circle"></i> تم إعادة التعيين بنجاح';
+                currentTasbihElement.innerHTML = '<i class="fas fa-check-circle"></i> تم إعادة التعيين';
                 setTimeout(() => {
                     currentTasbihElement.textContent = currentTasbih;
                 }, 1500);
-            }, 500);
+            }, 400);
         }
         
         // تغيير نوع التسبيح
@@ -1096,82 +944,89 @@
         
         // تشغيل صوت عند اكتمال الدورة
         function playCompletionSound() {
-            // إنشاء صوت باستخدام Web Audio API
             try {
+                // صوت بسيط باستخدام Web Audio API
                 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
                 
-                // نغمة أكثر جمالاً
-                for (let i = 0; i < 3; i++) {
-                    setTimeout(() => {
-                        const oscillator = audioContext.createOscillator();
-                        const gainNode = audioContext.createGain();
-                        
-                        oscillator.connect(gainNode);
-                        gainNode.connect(audioContext.destination);
-                        
-                        oscillator.frequency.value = 523.25 + (i * 100); // نغمات متدرجة
-                        oscillator.type = 'sine';
-                        
-                        gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
-                        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
-                        
-                        oscillator.start(audioContext.currentTime);
-                        oscillator.stop(audioContext.currentTime + 0.3);
-                    }, i * 100);
-                }
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.value = 523.25;
+                oscillator.type = 'sine';
+                
+                gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+                
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + 0.3);
             } catch (e) {
-                console.log("تعذر تشغيل الصوت");
+                // تجاهل الأخطاء إذا لم يعمل الصوت
             }
         }
         
-        // حفظ البيانات في التخزين المحلي
+        // حفظ البيانات
         function saveData() {
             const data = {
                 count,
                 totalCount,
                 completedCircles,
-                currentCircle: count % 33,
                 currentTasbih,
                 tasbihHistory,
                 timestamp: new Date().toISOString()
             };
             
-            localStorage.setItem('beautifulTasbih', JSON.stringify(data));
+            localStorage.setItem('tasbihAppData', JSON.stringify(data));
         }
         
         // إعداد مستمعي الأحداث
         function setupEventListeners() {
             // زر الزيادة
             countBtn.addEventListener('click', incrementCount);
+            countBtn.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                incrementCount();
+            }, { passive: false });
             
             // زر التراجع
             undoBtn.addEventListener('click', undoCount);
+            undoBtn.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                undoCount();
+            }, { passive: false });
             
-            // زر إعادة التعيين (بدون تأكيد)
+            // زر إعادة التعيين
             resetBtn.addEventListener('click', resetCount);
+            resetBtn.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                resetCount();
+            }, { passive: false });
             
             // أزرار أنواع التسبيح
             optionButtons.forEach(btn => {
                 btn.addEventListener('click', () => {
                     changeTasbih(btn.dataset.tasbih);
                 });
+                
+                btn.addEventListener('touchstart', function(e) {
+                    e.preventDefault();
+                    changeTasbih(this.dataset.tasbih);
+                }, { passive: false });
             });
             
             // اختصارات لوحة المفاتيح
             document.addEventListener('keydown', (e) => {
-                // مسافة للزيادة
                 if (e.code === 'Space') {
                     e.preventDefault();
                     incrementCount();
                 }
                 
-                // Z للتراجع
                 if (e.code === 'KeyZ' && (e.ctrlKey || e.metaKey)) {
                     e.preventDefault();
                     undoCount();
                 }
                 
-                // R للإعادة (بدون تأكيد)
                 if (e.code === 'KeyR') {
                     e.preventDefault();
                     resetCount();
@@ -1186,73 +1041,49 @@
                 }
             });
             
-            // دعم اللمس للشاشات التي تعمل باللمس
-            let touchStartY = 0;
-            document.addEventListener('touchstart', (e) => {
-                touchStartY = e.touches[0].clientY;
-            }, {passive: true});
-            
-            document.addEventListener('touchend', (e) => {
-                const touchEndY = e.changedTouches[0].clientY;
-                const diff = touchStartY - touchEndY;
-                
-                // مسافة كبيرة لأعلى للزيادة
-                if (diff > 60) {
-                    incrementCount();
+            // منع التمرير السريع
+            document.addEventListener('touchmove', function(e) {
+                if (e.target.closest('.counter-controls') || 
+                    e.target.closest('.tasbih-options') ||
+                    e.target.closest('.counter-display-section')) {
+                    e.preventDefault();
                 }
-                
-                // مسافة كبيرة لأسفل للتراجع
-                if (diff < -60) {
-                    undoCount();
-                }
-            }, {passive: true});
+            }, { passive: false });
             
-            // النقر على العداد نفسه للزيادة
+            // النقر على العداد للزيادة
             counterElement.addEventListener('click', incrementCount);
+            counterElement.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                incrementCount();
+            }, { passive: false });
             
-            // النقر على حبات المسبحة للزيادة
-            beadsContainer.addEventListener('click', (e) => {
-                if (e.target.classList.contains('bead')) {
-                    incrementCount();
-                }
+            // منع التكبير/التصغير في الهواتف
+            document.addEventListener('gesturestart', function(e) {
+                e.preventDefault();
             });
             
-            // النقر المزدوج على العداد للإعادة
-            let lastTap = 0;
-            counterElement.addEventListener('click', (e) => {
-                const currentTime = new Date().getTime();
-                const tapLength = currentTime - lastTap;
-                
-                if (tapLength < 500 && tapLength > 0) {
-                    // نقر مزدوج - إعادة تعيين
-                    resetCount();
-                }
-                
-                lastTap = currentTime;
-            });
+            // إصلاح لمشكلة iOS Safari
+            document.addEventListener('touchstart', function() {}, { passive: true });
         }
         
-        // بدء التطبيق عند تحميل الصفحة
+        // بدء التطبيق
         document.addEventListener('DOMContentLoaded', initApp);
         
-        // دعم وضع عدم الاتصال
-        window.addEventListener('online', () => {
-            console.log("أنت الآن متصل بالإنترنت");
+        // ضبط حجم العناصر عند تغيير حجم النافذة
+        window.addEventListener('resize', function() {
+            document.body.style.height = window.innerHeight + 'px';
         });
         
-        window.addEventListener('offline', () => {
-            console.log("أنت الآن غير متصل بالإنترنت - التطبيق يعمل محلياً");
-        });
+        // ضبط الارتفاع الأولي
+        window.dispatchEvent(new Event('resize'));
         
-        // تأثير دخول الصفحة
-        window.addEventListener('load', () => {
-            document.querySelector('.container').style.opacity = '0';
-            document.querySelector('.container').style.transform = 'translateY(30px)';
+        // إضافة تأثير دخول الصفحة
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
             
-            setTimeout(() => {
-                document.querySelector('.container').style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-                document.querySelector('.container').style.opacity = '1';
-                document.querySelector('.container').style.transform = 'translateY(0)';
+            setTimeout(function() {
+                document.body.style.transition = 'opacity 0.5s ease';
+                document.body.style.opacity = '1';
             }, 100);
         });
     </script>
