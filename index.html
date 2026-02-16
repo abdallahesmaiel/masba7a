@@ -224,6 +224,59 @@
             margin: 5px 0;
         }
         
+        /* Visitor Counter - دائري */
+        .visitor-counter-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .circular-counter {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(145deg, #1a3a2a, #0f2b1d);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid var(--primary-gold);
+            box-shadow: var(--glow-gold), inset 0 0 15px rgba(0,0,0,0.8);
+            position: relative;
+        }
+        
+        .circular-counter::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            animation: rotate 10s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .visitor-number {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--primary-gold);
+            line-height: 1;
+            text-shadow: 0 0 15px #ffd700;
+        }
+        
+        .visitor-label {
+            font-size: 0.7rem;
+            color: var(--light-gold);
+            opacity: 0.8;
+            letter-spacing: 1px;
+        }
+        
         /* Counter Display */
         .counter-display-section {
             background: linear-gradient(135deg, rgba(30, 30, 30, 0.9) 0%, rgba(45, 45, 45, 0.7) 100%);
@@ -521,6 +574,8 @@
             .stat-card:nth-child(3) { grid-column: span 2; }
             .deceased-section { flex-wrap: wrap; }
             #deceasedNameInput { width: 140px; }
+            .circular-counter { width: 80px; height: 80px; }
+            .visitor-number { font-size: 1.8rem; }
         }
     </style>
 </head>
@@ -547,6 +602,14 @@
         </div>
         
         <div class="main-content">
+            <!-- عداد الزوار الدائري -->
+            <div class="visitor-counter-container">
+                <div class="circular-counter">
+                    <span class="visitor-number" id="visitorCount">0</span>
+                    <span class="visitor-label">زائر</span>
+                </div>
+            </div>
+            
             <!-- بانر النية والصدقة الجارية -->
             <div class="intention-banner" id="intentionBanner">
                 <i class="fas fa-hand-holding-heart"></i>
@@ -648,7 +711,8 @@
                 saveDeceasedBtn: document.getElementById('saveDeceasedBtn'),
                 intentionText: document.getElementById('intentionText'),
                 shareBtn: document.getElementById('shareBtn'),
-                copyLinkBtn: document.getElementById('copyLinkBtn')
+                copyLinkBtn: document.getElementById('copyLinkBtn'),
+                visitorCount: document.getElementById('visitorCount')
             };
             
             // حالة التطبيق
@@ -661,18 +725,70 @@
                 dhikrHistory: [],
                 settings: {
                     vibration: true
-                }
+                },
+                visitorId: null,
+                isNewVisitor: false
             };
             
             // تهيئة التطبيق
             function init() {
                 loadFromURL();
                 loadFromStorage();
+                initializeVisitorCounter();
                 renderDhikrOptions();
                 updateDisplay();
                 updateIntentionBanner();
                 setupEventListeners();
                 hideLoading();
+            }
+            
+            // عداد الزوار - باستخدام localStorage
+            function initializeVisitorCounter() {
+                try {
+                    // إنشاء معرف فريد للزائر إذا لم يكن موجوداً
+                    let visitorData = localStorage.getItem('visitorData');
+                    let visitorCount = localStorage.getItem('totalVisitors') || '0';
+                    
+                    if (!visitorData) {
+                        // زائر جديد
+                        visitorData = {
+                            id: generateVisitorId(),
+                            firstVisit: new Date().toISOString()
+                        };
+                        localStorage.setItem('visitorData', JSON.stringify(visitorData));
+                        
+                        // زيادة عدد الزوار الكلي
+                        let newCount = parseInt(visitorCount) + 1;
+                        localStorage.setItem('totalVisitors', newCount.toString());
+                        visitorCount = newCount.toString();
+                        
+                        state.isNewVisitor = true;
+                    }
+                    
+                    // عرض العدد
+                    if (elements.visitorCount) {
+                        elements.visitorCount.textContent = visitorCount;
+                        
+                        // تأثير احتفالي للزوار الجدد
+                        if (state.isNewVisitor) {
+                            elements.visitorCount.classList.add('pulse-effect');
+                            setTimeout(() => {
+                                elements.visitorCount.classList.remove('pulse-effect');
+                            }, 1000);
+                        }
+                    }
+                    
+                } catch (e) {
+                    console.warn('خطأ في عداد الزوار');
+                    if (elements.visitorCount) {
+                        elements.visitorCount.textContent = '1';
+                    }
+                }
+            }
+            
+            // إنشاء معرف فريد للزائر
+            function generateVisitorId() {
+                return 'visitor_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
             }
             
             // تحميل من الرابط
