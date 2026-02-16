@@ -86,7 +86,7 @@
         
         /* Luxury Header */
         .luxury-header {
-            padding: 25px 30px;
+            padding: 20px 25px;
             background: linear-gradient(180deg, rgba(30, 30, 30, 0.9) 0%, rgba(18, 18, 18, 0.9) 100%);
             border-bottom: 2px solid var(--primary-gold);
             position: relative;
@@ -106,7 +106,7 @@
         
         .app-title {
             text-align: center;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
         
         .app-title h1 {
@@ -130,10 +130,64 @@
             letter-spacing: 2px;
         }
         
+        /* Deceased Section */
+        .deceased-section {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 50px;
+            padding: 8px 15px;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            backdrop-filter: blur(5px);
+        }
+        
+        .deceased-section i {
+            color: var(--primary-gold);
+            font-size: 1.1rem;
+        }
+        
+        #deceasedNameInput {
+            background: transparent;
+            border: none;
+            color: var(--white);
+            font-family: 'Almarai', sans-serif;
+            font-size: 1rem;
+            text-align: center;
+            width: 170px;
+            padding: 5px;
+            border-bottom: 1px dashed rgba(212, 175, 55, 0.5);
+            outline: none;
+        }
+        
+        #deceasedNameInput::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+        
+        .save-name-btn {
+            background: transparent;
+            border: 1px solid var(--primary-gold);
+            color: var(--primary-gold);
+            border-radius: 30px;
+            padding: 4px 12px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Tajawal', sans-serif;
+        }
+        
+        .save-name-btn:hover {
+            background: var(--primary-gold);
+            color: var(--black);
+        }
+        
         /* Main Content Area */
         .main-content {
             flex: 1;
-            padding: 25px;
+            padding: 20px 20px 10px;
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
             position: relative;
@@ -144,8 +198,8 @@
         .counter-display-section {
             background: linear-gradient(135deg, rgba(30, 30, 30, 0.9) 0%, rgba(45, 45, 45, 0.7) 100%);
             border-radius: var(--border-radius);
-            padding: 30px;
-            margin-bottom: 25px;
+            padding: 25px 20px;
+            margin-bottom: 20px;
             border: 1px solid rgba(212, 175, 55, 0.3);
             box-shadow: 
                 var(--shadow-medium),
@@ -169,9 +223,9 @@
             align-items: center;
             justify-content: center;
             gap: 15px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             color: var(--light-gold);
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 300;
             letter-spacing: 1px;
         }
@@ -191,15 +245,16 @@
             background-clip: text;
             color: transparent;
             text-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
-            margin: 20px 0;
+            margin: 10px 0;
             letter-spacing: 3px;
             position: relative;
+            cursor: pointer;
         }
         
         .counter-number::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -5px;
             left: 25%;
             width: 50%;
             height: 2px;
@@ -210,13 +265,13 @@
             background: rgba(212, 175, 55, 0.1);
             border: 1px solid rgba(212, 175, 55, 0.2);
             border-radius: 15px;
-            padding: 20px;
-            margin: 25px 0;
+            padding: 15px;
+            margin: 15px 0;
             text-align: center;
             font-family: 'El Messiri', serif;
             font-size: 1.8rem;
             color: var(--light-gold);
-            min-height: 80px;
+            min-height: 70px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -224,16 +279,35 @@
             box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
         }
         
+        /* Dedication Badge */
+        .dedication-badge {
+            background: rgba(212, 175, 55, 0.15);
+            border-radius: 30px;
+            padding: 10px 15px;
+            margin: 15px 0 10px;
+            font-size: 1rem;
+            color: var(--secondary-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border: 1px dashed rgba(212, 175, 55, 0.4);
+        }
+        
+        .dedication-badge i {
+            font-size: 1.2rem;
+        }
+        
         /* Luxury Controls */
         .luxury-controls {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin: 25px 0;
+            gap: 12px;
+            margin: 15px 0;
         }
         
         .luxury-btn {
-            padding: 20px;
+            padding: 18px;
             border: none;
             border-radius: 15px;
             font-family: 'Almarai', sans-serif;
@@ -242,7 +316,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
+            gap: 10px;
             cursor: pointer;
             transition: var(--transition);
             position: relative;
@@ -310,8 +384,8 @@
         .dhikr-types {
             background: linear-gradient(135deg, rgba(30, 30, 30, 0.9) 0%, rgba(45, 45, 45, 0.7) 100%);
             border-radius: var(--border-radius);
-            padding: 25px;
-            margin: 25px 0;
+            padding: 20px;
+            margin: 20px 0;
             border: 1px solid rgba(212, 175, 55, 0.3);
             box-shadow: var(--shadow-medium);
         }
@@ -319,29 +393,29 @@
         .section-title {
             display: flex;
             align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
+            gap: 12px;
+            margin-bottom: 15px;
             color: var(--light-gold);
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 600;
         }
         
         .section-title i {
             color: var(--primary-gold);
-            font-size: 1.6rem;
+            font-size: 1.5rem;
         }
         
         .dhikr-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
+            gap: 12px;
         }
         
         .dhikr-option {
             background: rgba(61, 61, 61, 0.5);
             border: 2px solid rgba(212, 175, 55, 0.2);
             border-radius: 12px;
-            padding: 18px 12px;
+            padding: 15px 10px;
             text-align: center;
             cursor: pointer;
             transition: var(--transition);
@@ -349,7 +423,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 100px;
+            min-height: 90px;
             backdrop-filter: blur(5px);
         }
         
@@ -370,7 +444,7 @@
             font-size: 1.2rem;
             font-weight: 600;
             color: var(--light-gold);
-            margin-bottom: 8px;
+            margin-bottom: 5px;
         }
         
         .dhikr-desc {
@@ -384,9 +458,9 @@
         .stats-section {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin: 25px 0;
-            padding: 20px;
+            gap: 12px;
+            margin: 20px 0;
+            padding: 15px;
             background: linear-gradient(135deg, rgba(30, 30, 30, 0.9) 0%, rgba(45, 45, 45, 0.7) 100%);
             border-radius: var(--border-radius);
             border: 1px solid rgba(212, 175, 55, 0.2);
@@ -394,7 +468,7 @@
         
         .stat-card {
             text-align: center;
-            padding: 20px 10px;
+            padding: 15px 5px;
             background: rgba(212, 175, 55, 0.05);
             border-radius: 12px;
             border: 1px solid rgba(212, 175, 55, 0.1);
@@ -405,7 +479,7 @@
             font-size: 2.2rem;
             font-weight: 800;
             color: var(--primary-gold);
-            margin-bottom: 8px;
+            margin-bottom: 5px;
             text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
         }
         
@@ -417,9 +491,37 @@
             letter-spacing: 1px;
         }
         
+        /* Share Buttons */
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0 10px;
+        }
+        
+        .share-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50px;
+            padding: 8px 20px;
+            color: var(--light-gold);
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .share-btn:hover {
+            background: var(--primary-gold);
+            color: var(--black);
+            border-color: var(--primary-gold);
+        }
+        
         /* Footer */
         .luxury-footer {
-            padding: 20px;
+            padding: 15px;
             text-align: center;
             background: linear-gradient(180deg, rgba(18, 18, 18, 0.9) 0%, rgba(30, 30, 30, 0.9) 100%);
             border-top: 1px solid rgba(212, 175, 55, 0.2);
@@ -485,6 +587,41 @@
             animation: slideIn 0.5s ease;
         }
         
+        /* Loading Animation */
+        .loading-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+        }
+        
+        .loading-overlay.hidden {
+            opacity: 0;
+        }
+        
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 3px solid rgba(212, 175, 55, 0.3);
+            border-top: 3px solid var(--primary-gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
         /* Responsive Design */
         @media (max-width: 768px) {
             .counter-number {
@@ -493,12 +630,11 @@
             
             .current-dhikr {
                 font-size: 1.6rem;
-                min-height: 70px;
-                padding: 15px;
+                min-height: 65px;
             }
             
             .luxury-btn {
-                padding: 18px;
+                padding: 16px;
                 font-size: 1rem;
             }
             
@@ -507,8 +643,8 @@
             }
             
             .dhikr-option {
-                min-height: 90px;
-                padding: 15px 10px;
+                min-height: 85px;
+                padding: 12px 8px;
             }
             
             .dhikr-text {
@@ -518,7 +654,7 @@
         
         @media (max-width: 480px) {
             .luxury-header {
-                padding: 20px 15px;
+                padding: 15px 15px;
             }
             
             .app-title h1 {
@@ -526,7 +662,7 @@
             }
             
             .counter-number {
-                font-size: 4rem;
+                font-size: 4.5rem;
             }
             
             .current-dhikr {
@@ -554,6 +690,14 @@
             .stat-card:nth-child(3) {
                 grid-column: span 2;
             }
+            
+            .deceased-section {
+                flex-wrap: wrap;
+            }
+            
+            #deceasedNameInput {
+                width: 140px;
+            }
         }
         
         @media (max-height: 700px) {
@@ -562,22 +706,22 @@
             }
             
             .counter-display-section {
-                padding: 20px;
+                padding: 15px;
             }
             
             .counter-number {
                 font-size: 4rem;
-                margin: 15px 0;
+                margin: 5px 0;
             }
             
             .current-dhikr {
-                font-size: 1.4rem;
-                min-height: 60px;
-                margin: 15px 0;
+                font-size: 1.3rem;
+                min-height: 55px;
+                margin: 10px 0;
             }
             
             .luxury-btn {
-                padding: 15px;
+                padding: 14px;
             }
         }
         
@@ -589,41 +733,6 @@
                 padding-top: env(safe-area-inset-top);
                 padding-bottom: env(safe-area-inset-bottom);
             }
-        }
-        
-        /* Loading Animation */
-        .loading-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--black);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            opacity: 1;
-            transition: opacity 0.5s ease;
-        }
-        
-        .loading-overlay.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-        
-        .loading-spinner {
-            width: 60px;
-            height: 60px;
-            border: 3px solid rgba(212, 175, 55, 0.3);
-            border-top: 3px solid var(--primary-gold);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -638,6 +747,13 @@
                 <h1><i class="fas fa-gem"></i> Tasbih Pro</h1>
                 <p class="app-subtitle">مسبحة إلكترونية برو</p>
             </div>
+            
+            <!-- قسم اسم المتوفي -->
+            <div class="deceased-section">
+                <i class="fas fa-mosque"></i>
+                <input type="text" id="deceasedNameInput" placeholder="اسم المتوفي" maxlength="30" value="">
+                <button class="save-name-btn" id="saveDeceasedBtn"><i class="fas fa-check"></i> حفظ</button>
+            </div>
         </div>
         
         <div class="main-content">
@@ -651,6 +767,12 @@
                 
                 <div class="current-dhikr" id="currentDhikr">
                     سبحان الله
+                </div>
+                
+                <!-- إهداء للمتوفي ديناميكي -->
+                <div class="dedication-badge" id="dedicationMessage">
+                    <i class="fas fa-hand-sparkles"></i>
+                    <span id="dedicationText">اللهم اغفر للمسلمين والمسلمات</span>
                 </div>
                 
                 <div class="luxury-controls">
@@ -676,7 +798,7 @@
                 </div>
                 
                 <div class="dhikr-grid" id="dhikrGrid">
-                    <!-- Will be populated by JavaScript -->
+                    <!-- سيتم تعبئتها بواسطة JavaScript -->
                 </div>
             </div>
             
@@ -694,357 +816,644 @@
                     <div class="stat-label">المجموع الكلي</div>
                 </div>
             </div>
+            
+            <!-- أزرار المشاركة -->
+            <div class="share-buttons">
+                <button class="share-btn" id="shareBtn"><i class="fab fa-facebook"></i> مشاركة</button>
+                <button class="share-btn" id="copyLinkBtn"><i class="fas fa-link"></i> نسخ الرابط</button>
+            </div>
         </div>
         
         <div class="luxury-footer">
-            <p class="footer-text">سبحان الله وبحمده سبحان الله العظيم</p>
+            <p class="footer-text">الدعاء صدقة جارية للمتوفي</p>
         </div>
     </div>
 
     <script>
-        // === Professional App State ===
-        const TasbihApp = {
-            // State
-            state: {
-                count: 0,
-                totalCount: 0,
-                completedCircles: 0,
-                currentDhikr: 'سبحان الله',
-                dhikrHistory: [],
-                dhikrTypes: [
-                    { text: 'سبحان الله', desc: 'التسبيح', icon: 'fas fa-star' },
-                    { text: 'الحمد لله', desc: 'التحميد', icon: 'fas fa-heart' },
-                    { text: 'الله أكبر', desc: 'التكبير', icon: 'fas fa-sun' },
-                    { text: 'لا إله إلا الله', desc: 'التوحيد', icon: 'fas fa-certificate' },
-                    { text: 'أستغفر الله', desc: 'الاستغفار', icon: 'fas fa-hands-praying' },
-                    { text: 'لا حول ولا قوة إلا بالله', desc: 'الحوقلة', icon: 'fas fa-shield-alt' }
-                ],
-                settings: {
-                    sound: true,
-                    vibration: true,
-                    theme: 'luxury'
-                }
-            },
+        // === Tasbih Pro - النسخة المحسنة مع جميع التحسينات ===
+        (function() {
+            'use strict';
             
-            // Elements
-            elements: {},
-            
-            // Audio Context
-            audioContext: null,
-            
-            // Initialization
-            init() {
-                this.cacheElements();
-                this.loadState();
-                this.renderDhikrOptions();
-                this.updateDisplay();
-                this.setupEventListeners();
-                this.setupAudio();
-                this.hideLoading();
-                this.setupScrollFix();
-            },
-            
-            // Cache DOM Elements
-            cacheElements() {
-                this.elements = {
-                    counter: document.getElementById('counter'),
-                    currentDhikr: document.getElementById('currentDhikr'),
-                    countBtn: document.getElementById('countBtn'),
-                    undoBtn: document.getElementById('undoBtn'),
-                    resetBtn: document.getElementById('resetBtn'),
-                    completedCircles: document.getElementById('completedCircles'),
-                    currentProgress: document.getElementById('currentProgress'),
-                    totalCount: document.getElementById('totalCount'),
-                    dhikrGrid: document.getElementById('dhikrGrid'),
-                    loadingOverlay: document.getElementById('loadingOverlay')
-                };
-            },
-            
-            // Setup Audio
-            setupAudio() {
-                try {
-                    this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                } catch (e) {
-                    console.log('Audio not supported');
-                }
-            },
-            
-            // Play Premium Sound
-            playSound(frequency = 523.25, duration = 0.2) {
-                if (!this.audioContext || !this.state.settings.sound) return;
-                
-                try {
-                    const oscillator = this.audioContext.createOscillator();
-                    const gainNode = this.audioContext.createGain();
-                    
-                    oscillator.connect(gainNode);
-                    gainNode.connect(this.audioContext.destination);
-                    
-                    oscillator.frequency.value = frequency;
-                    oscillator.type = 'sine';
-                    
-                    gainNode.gain.setValueAtTime(0.1, this.audioContext.currentTime);
-                    gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + duration);
-                    
-                    oscillator.start(this.audioContext.currentTime);
-                    oscillator.stop(this.audioContext.currentTime + duration);
-                } catch (e) {
-                    // Silent fail
-                }
-            },
-            
-            // Vibration
-            vibrate(pattern = [100, 50, 100]) {
-                if (navigator.vibrate && this.state.settings.vibration) {
-                    navigator.vibrate(pattern);
-                }
-            },
-            
-            // Increment Count
-            increment() {
-                this.state.count++;
-                this.state.totalCount++;
-                this.state.dhikrHistory.push(this.state.currentDhikr);
-                
-                // Pulse animation
-                this.elements.counter.classList.add('pulse-effect');
-                setTimeout(() => {
-                    this.elements.counter.classList.remove('pulse-effect');
-                }, 300);
-                
-                // Check for completed circle
-                if (this.state.count % 33 === 0) {
-                    this.state.completedCircles++;
-                    this.playSound(659.25, 0.5); // Higher pitch for completion
-                    this.vibrate([200, 100, 200]);
-                    
-                    // Glow effect for milestone
-                    this.elements.counter.classList.add('glow-effect');
-                    setTimeout(() => {
-                        this.elements.counter.classList.remove('glow-effect');
-                    }, 1000);
-                } else {
-                    this.playSound();
-                    this.vibrate([50]);
-                }
-                
-                this.updateDisplay();
-                this.saveState();
-            },
-            
-            // Undo
-            undo() {
-                if (this.state.count > 0) {
-                    this.state.count--;
-                    this.state.totalCount--;
-                    this.state.dhikrHistory.pop();
-                    
-                    if ((this.state.count + 1) % 33 === 0 && this.state.completedCircles > 0) {
-                        this.state.completedCircles--;
+            const TasbihApp = {
+                // الحالة الأساسية
+                state: {
+                    count: 0,
+                    totalCount: 0,
+                    completedCircles: 0,
+                    currentDhikr: 'سبحان الله',
+                    dhikrHistory: [],
+                    deceasedName: '',
+                    dhikrTypes: [
+                        { text: 'سبحان الله', desc: 'التسبيح', icon: 'fas fa-star' },
+                        { text: 'الحمد لله', desc: 'التحميد', icon: 'fas fa-heart' },
+                        { text: 'الله أكبر', desc: 'التكبير', icon: 'fas fa-sun' },
+                        { text: 'لا إله إلا الله', desc: 'التوحيد', icon: 'fas fa-certificate' },
+                        { text: 'أستغفر الله', desc: 'الاستغفار', icon: 'fas fa-hands-praying' },
+                        { text: 'لا حول ولا قوة إلا بالله', desc: 'الحوقلة', icon: 'fas fa-shield-alt' }
+                    ],
+                    settings: {
+                        sound: true,
+                        vibration: true
                     }
+                },
+                
+                // عناصر DOM
+                elements: {},
+                
+                // Audio Context
+                audioContext: null,
+                audioInitialized: false,
+                
+                // ===== التهيئة =====
+                init() {
+                    this.cacheElements();
+                    
+                    // محاولة تحميل من URL أولاً
+                    const urlLoaded = this.loadStateFromUrl();
+                    
+                    // إذا لم يوجد في URL، حمل من localStorage
+                    if (!urlLoaded) {
+                        this.loadStateFromStorage();
+                    } else {
+                        // إذا وجد في URL، دمج مع localStorage للحفاظ على العداد
+                        this.mergeWithStorage();
+                    }
+                    
+                    this.renderDhikrOptions();
+                    this.updateDisplay();
+                    this.updateDedicationMessage();
+                    this.setupEventListeners();
+                    this.setupAudio();
+                    this.hideLoading();
+                    this.updateUrlSilently();
+                    
+                    // إضافة Service Worker للتشغيل بدون إنترنت (اختياري)
+                    this.registerServiceWorker();
+                },
+                
+                // تخزين المراجع للعناصر
+                cacheElements() {
+                    const elementIds = [
+                        'counter', 'currentDhikr', 'countBtn', 'undoBtn', 'resetBtn',
+                        'completedCircles', 'currentProgress', 'totalCount', 'dhikrGrid',
+                        'deceasedNameInput', 'saveDeceasedBtn', 'dedicationText', 
+                        'shareBtn', 'copyLinkBtn', 'loadingOverlay'
+                    ];
+                    
+                    elementIds.forEach(id => {
+                        this.elements[id] = document.getElementById(id);
+                    });
+                },
+                
+                // ===== تحميل الحالة =====
+                loadStateFromUrl() {
+                    try {
+                        const params = new URLSearchParams(window.location.search);
+                        const deceasedParam = params.get('deceased');
+                        
+                        if (deceasedParam && deceasedParam.trim() !== '') {
+                            // تعقيم النص - إزالة أي أحرف غير عربية
+                            const rawText = decodeURIComponent(deceasedParam).trim();
+                            // السماح فقط بالأحرف العربية والمسافات وبعض الرموز البسيطة
+                            const sanitized = rawText.replace(/[^\u0600-\u06FF\s\u2000-\u200F\u202E]/g, '');
+                            // تحديد الطول الأقصى
+                            this.state.deceasedName = sanitized.substring(0, 30);
+                            
+                            if (this.elements.deceasedNameInput) {
+                                this.elements.deceasedNameInput.value = this.state.deceasedName;
+                            }
+                            
+                            return true; // تم التحميل من URL
+                        }
+                    } catch (e) {
+                        console.warn('خطأ في تحميل البيانات من الرابط');
+                    }
+                    
+                    return false;
+                },
+                
+                loadStateFromStorage() {
+                    try {
+                        const saved = localStorage.getItem('tasbihProState');
+                        if (saved) {
+                            const data = JSON.parse(saved);
+                            
+                            this.state.count = data.count || 0;
+                            this.state.totalCount = data.totalCount || 0;
+                            this.state.completedCircles = data.completedCircles || 0;
+                            this.state.currentDhikr = data.currentDhikr || 'سبحان الله';
+                            this.state.dhikrHistory = Array.isArray(data.dhikrHistory) ? data.dhikrHistory.slice(-1000) : [];
+                            this.state.deceasedName = data.deceasedName || '';
+                            
+                            if (this.elements.deceasedNameInput) {
+                                this.elements.deceasedNameInput.value = this.state.deceasedName;
+                            }
+                        }
+                    } catch (e) {
+                        console.warn('خطأ في تحميل البيانات من التخزين المحلي');
+                    }
+                },
+                
+                // دمج مع localStorage (عند وجود اسم في URL)
+                mergeWithStorage() {
+                    try {
+                        const saved = localStorage.getItem('tasbihProState');
+                        if (saved) {
+                            const data = JSON.parse(saved);
+                            
+                            // نحافظ على اسم المتوفي من URL، لكن نأخذ العداد من localStorage
+                            this.state.count = data.count || 0;
+                            this.state.totalCount = data.totalCount || 0;
+                            this.state.completedCircles = data.completedCircles || 0;
+                            this.state.currentDhikr = data.currentDhikr || 'سبحان الله';
+                            this.state.dhikrHistory = Array.isArray(data.dhikrHistory) ? data.dhikrHistory.slice(-1000) : [];
+                            
+                            // اسم المتوفي يبقى من URL (لا نستبدله)
+                        }
+                    } catch (e) {
+                        console.warn('خطأ في دمج البيانات');
+                    }
+                },
+                
+                // حفظ الحالة
+                saveState() {
+                    try {
+                        // تحديد حجم التاريخ (آخر 1000 تسبيحة فقط)
+                        const limitedHistory = this.state.dhikrHistory.slice(-1000);
+                        
+                        const data = {
+                            count: this.state.count,
+                            totalCount: this.state.totalCount,
+                            completedCircles: this.state.completedCircles,
+                            currentDhikr: this.state.currentDhikr,
+                            dhikrHistory: limitedHistory,
+                            deceasedName: this.state.deceasedName,
+                            settings: this.state.settings,
+                            timestamp: new Date().toISOString()
+                        };
+                        
+                        // محاولة الحفظ مع معالجة خطأ سعة التخزين
+                        try {
+                            localStorage.setItem('tasbihProState', JSON.stringify(data));
+                        } catch (storageError) {
+                            if (storageError.name === 'QuotaExceededError') {
+                                // إذا كان التخزين ممتلئاً، احذف التاريخ بالكامل وحاول مرة أخرى
+                                data.dhikrHistory = [];
+                                localStorage.setItem('tasbihProState', JSON.stringify(data));
+                            } else {
+                                throw storageError;
+                            }
+                        }
+                        
+                        this.updateUrlSilently();
+                    } catch (e) {
+                        console.warn('خطأ في حفظ البيانات');
+                    }
+                },
+                
+                // تحديث الرابط بدون إعادة تحميل
+                updateUrlSilently() {
+                    try {
+                        const url = new URL(window.location.href.split('?')[0]);
+                        
+                        if (this.state.deceasedName && this.state.deceasedName.trim() !== '') {
+                            // ترميز الاسم بأمان
+                            url.searchParams.set('deceased', encodeURIComponent(this.state.deceasedName.trim()));
+                        }
+                        
+                        window.history.replaceState({}, '', url);
+                    } catch (e) {
+                        console.warn('خطأ في تحديث الرابط');
+                    }
+                },
+                
+                // ===== إعداد الصوت =====
+                setupAudio() {
+                    try {
+                        // إنشاء AudioContext ولكن لا نبدأ تشغيله حتى يتفاعل المستخدم
+                        this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                        
+                        // إعداد مستمع لأول تفاعل مستخدم
+                        const initAudioOnUserInteraction = () => {
+                            if (!this.audioInitialized && this.audioContext) {
+                                if (this.audioContext.state === 'suspended') {
+                                    this.audioContext.resume().then(() => {
+                                        this.audioInitialized = true;
+                                    }).catch(() => {});
+                                } else {
+                                    this.audioInitialized = true;
+                                }
+                            }
+                            
+                            // إزالة المستمعين بعد التهيئة
+                            document.removeEventListener('click', initAudioOnUserInteraction);
+                            document.removeEventListener('touchstart', initAudioOnUserInteraction);
+                            document.removeEventListener('keydown', initAudioOnUserInteraction);
+                        };
+                        
+                        document.addEventListener('click', initAudioOnUserInteraction);
+                        document.addEventListener('touchstart', initAudioOnUserInteraction);
+                        document.addEventListener('keydown', initAudioOnUserInteraction);
+                        
+                    } catch (e) {
+                        console.log('الصوت غير مدعوم في هذا المتصفح');
+                        this.audioContext = null;
+                    }
+                },
+                
+                // تشغيل الصوت المحسن
+                playSound(frequency = 523.25, duration = 0.2) {
+                    if (!this.state.settings.sound || !this.audioContext) return;
+                    
+                    try {
+                        // التأكد من أن AudioContext نشط
+                        if (this.audioContext.state === 'suspended') {
+                            this.audioContext.resume().then(() => {
+                                this._playOscillator(frequency, duration);
+                            }).catch(() => {});
+                            return;
+                        }
+                        
+                        this._playOscillator(frequency, duration);
+                    } catch (e) {
+                        // تجاهل أخطاء الصوت
+                    }
+                },
+                
+                _playOscillator(frequency, duration) {
+                    try {
+                        const oscillator = this.audioContext.createOscillator();
+                        const gainNode = this.audioContext.createGain();
+                        
+                        oscillator.connect(gainNode);
+                        gainNode.connect(this.audioContext.destination);
+                        
+                        oscillator.frequency.value = frequency;
+                        oscillator.type = 'sine';
+                        
+                        gainNode.gain.setValueAtTime(0.08, this.audioContext.currentTime);
+                        gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + duration);
+                        
+                        oscillator.start(this.audioContext.currentTime);
+                        oscillator.stop(this.audioContext.currentTime + duration);
+                    } catch (e) {
+                        // تجاهل الأخطاء
+                    }
+                },
+                
+                // الاهتزاز
+                vibrate(pattern = [50]) {
+                    if (this.state.settings.vibration && navigator.vibrate) {
+                        try {
+                            navigator.vibrate(pattern);
+                        } catch (e) {}
+                    }
+                },
+                
+                // ===== العمليات الرئيسية =====
+                increment() {
+                    // استخدام requestAnimationFrame لتحسين الأداء
+                    requestAnimationFrame(() => {
+                        const wasCircleComplete = (this.state.count + 1) % 33 === 0;
+                        
+                        this.state.count++;
+                        this.state.totalCount++;
+                        this.state.dhikrHistory.push(this.state.currentDhikr);
+                        
+                        // تأثير النبض
+                        this.elements.counter.classList.add('pulse-effect');
+                        setTimeout(() => {
+                            this.elements.counter.classList.remove('pulse-effect');
+                        }, 200);
+                        
+                        if (wasCircleComplete) {
+                            this.state.completedCircles++;
+                            this.playSound(659.25, 0.4); // صوت أعلى لإكمال الدورة
+                            this.vibrate([100, 50, 100]);
+                            
+                            // تأثير التوهج
+                            this.elements.counter.classList.add('glow-effect');
+                            setTimeout(() => {
+                                this.elements.counter.classList.remove('glow-effect');
+                            }, 600);
+                        } else {
+                            this.playSound(523.25, 0.1);
+                            this.vibrate([30]);
+                        }
+                        
+                        this.updateDisplay();
+                        this.saveState();
+                    });
+                },
+                
+                undo() {
+                    if (this.state.count > 0) {
+                        const wasCircleComplete = this.state.count % 33 === 0;
+                        
+                        this.state.count--;
+                        this.state.totalCount--;
+                        this.state.dhikrHistory.pop();
+                        
+                        // إذا كنا نتراجع عن آخر تسبيحة في دورة كاملة
+                        if (wasCircleComplete && this.state.completedCircles > 0) {
+                            this.state.completedCircles--;
+                        }
+                        
+                        this.playSound(392.00, 0.1);
+                        this.vibrate([30]);
+                        
+                        this.updateDisplay();
+                        this.saveState();
+                    }
+                },
+                
+                reset() {
+                    // حفظ الاسم قبل الإعادة
+                    const currentDeceased = this.state.deceasedName;
+                    
+                    this.state.count = 0;
+                    this.state.completedCircles = 0;
+                    this.state.dhikrHistory = [];
+                    
+                    // استعادة الاسم بعد الإعادة
+                    this.state.deceasedName = currentDeceased;
+                    
+                    // تأثيرات
+                    this.elements.counter.classList.add('pulse-effect');
+                    this.elements.currentDhikr.innerHTML = '<i class="fas fa-check-circle"></i> تم الإعادة بنجاح';
+                    
+                    setTimeout(() => {
+                        this.elements.counter.classList.remove('pulse-effect');
+                        this.elements.currentDhikr.textContent = this.state.currentDhikr;
+                    }, 800);
+                    
+                    this.playSound(392.00, 0.2);
+                    this.vibrate([100, 50, 100]);
                     
                     this.updateDisplay();
                     this.saveState();
-                    this.playSound(392.00, 0.1); // Lower pitch for undo
-                }
-            },
-            
-            // Reset
-            reset() {
-                this.state.count = 0;
-                this.state.completedCircles = 0;
-                this.state.dhikrHistory = [];
+                },
                 
-                // Animation
-                this.elements.counter.classList.add('pulse-effect');
-                this.elements.currentDhikr.innerHTML = '<i class="fas fa-check-circle"></i> تم الإعادة بنجاح';
+                changeDhikr(dhikrText) {
+                    this.state.currentDhikr = dhikrText;
+                    this.renderDhikrOptions();
+                    this.updateDisplay();
+                    this.saveState();
+                    this.playSound(440.00, 0.1);
+                },
                 
-                setTimeout(() => {
-                    this.elements.counter.classList.remove('pulse-effect');
-                    this.elements.currentDhikr.textContent = this.state.currentDhikr;
-                }, 1000);
-                
-                this.updateDisplay();
-                this.saveState();
-                this.playSound(392.00, 0.3);
-                this.vibrate([150, 50, 150]);
-            },
-            
-            // Change Dhikr
-            changeDhikr(dhikrText) {
-                this.state.currentDhikr = dhikrText;
-                this.renderDhikrOptions();
-                this.updateDisplay();
-                this.saveState();
-                this.playSound(440.00, 0.1);
-            },
-            
-            // Render Dhikr Options
-            renderDhikrOptions() {
-                this.elements.dhikrGrid.innerHTML = '';
-                
-                this.state.dhikrTypes.forEach(dhikr => {
-                    const option = document.createElement('div');
-                    option.className = `dhikr-option ${this.state.currentDhikr === dhikr.text ? 'active' : ''}`;
-                    option.innerHTML = `
-                        <i class="${dhikr.icon}"></i>
-                        <div class="dhikr-text">${dhikr.text}</div>
-                        <div class="dhikr-desc">${dhikr.desc}</div>
-                    `;
+                // حفظ اسم المتوفي
+                saveDeceasedName() {
+                    const newName = this.elements.deceasedNameInput.value.trim();
                     
-                    option.addEventListener('click', () => this.changeDhikr(dhikr.text));
+                    // تعقيم النص
+                    const sanitizedName = newName.replace(/[^\u0600-\u06FF\s\u2000-\u200F\u202E]/g, '').substring(0, 30);
                     
-                    this.elements.dhikrGrid.appendChild(option);
-                });
-            },
-            
-            // Update Display
-            updateDisplay() {
-                this.elements.counter.textContent = this.state.count;
-                this.elements.currentDhikr.textContent = this.state.currentDhikr;
-                this.elements.completedCircles.textContent = this.state.completedCircles;
-                this.elements.currentProgress.textContent = `${this.state.count % 33}/33`;
-                this.elements.totalCount.textContent = this.state.totalCount;
-            },
-            
-            // Save State
-            saveState() {
-                const data = {
-                    count: this.state.count,
-                    totalCount: this.state.totalCount,
-                    completedCircles: this.state.completedCircles,
-                    currentDhikr: this.state.currentDhikr,
-                    dhikrHistory: this.state.dhikrHistory,
-                    settings: this.state.settings,
-                    timestamp: new Date().toISOString()
-                };
+                    this.state.deceasedName = sanitizedName;
+                    this.elements.deceasedNameInput.value = sanitizedName;
+                    
+                    this.updateDedicationMessage();
+                    this.saveState();
+                    
+                    // تأثير بسيط
+                    this.vibrate([30]);
+                    
+                    // إزالة التركيز من الحقل
+                    this.elements.deceasedNameInput.blur();
+                },
                 
-                localStorage.setItem('tasbihProState', JSON.stringify(data));
-            },
-            
-            // Load State
-            loadState() {
-                const saved = localStorage.getItem('tasbihProState');
-                if (saved) {
+                // تحديث نص الإهداء
+                updateDedicationMessage() {
+                    if (this.elements.dedicationText) {
+                        if (this.state.deceasedName && this.state.deceasedName.trim() !== '') {
+                            this.elements.dedicationText.innerText = `الدعاء إلى روح ${this.state.deceasedName}`;
+                        } else {
+                            this.elements.dedicationText.innerText = 'اللهم اغفر للمسلمين والمسلمات';
+                        }
+                    }
+                },
+                
+                // ===== العرض =====
+                renderDhikrOptions() {
+                    if (!this.elements.dhikrGrid) return;
+                    
+                    this.elements.dhikrGrid.innerHTML = '';
+                    
+                    this.state.dhikrTypes.forEach(dhikr => {
+                        const option = document.createElement('div');
+                        option.className = `dhikr-option ${this.state.currentDhikr === dhikr.text ? 'active' : ''}`;
+                        option.innerHTML = `
+                            <i class="${dhikr.icon}" style="color: var(--primary-gold); margin-bottom: 5px;"></i>
+                            <div class="dhikr-text">${dhikr.text}</div>
+                            <div class="dhikr-desc">${dhikr.desc}</div>
+                        `;
+                        
+                        option.addEventListener('click', () => this.changeDhikr(dhikr.text));
+                        
+                        this.elements.dhikrGrid.appendChild(option);
+                    });
+                },
+                
+                updateDisplay() {
+                    if (this.elements.counter) {
+                        this.elements.counter.textContent = this.state.count;
+                    }
+                    
+                    if (this.elements.currentDhikr) {
+                        this.elements.currentDhikr.textContent = this.state.currentDhikr;
+                    }
+                    
+                    if (this.elements.completedCircles) {
+                        this.elements.completedCircles.textContent = this.state.completedCircles;
+                    }
+                    
+                    if (this.elements.currentProgress) {
+                        this.elements.currentProgress.textContent = `${this.state.count % 33}/33`;
+                    }
+                    
+                    if (this.elements.totalCount) {
+                        this.elements.totalCount.textContent = this.state.totalCount;
+                    }
+                },
+                
+                // ===== المشاركة =====
+                getShareUrl() {
+                    const baseUrl = window.location.href.split('?')[0];
+                    
+                    if (this.state.deceasedName && this.state.deceasedName.trim() !== '') {
+                        return `${baseUrl}?deceased=${encodeURIComponent(this.state.deceasedName.trim())}`;
+                    }
+                    
+                    return baseUrl;
+                },
+                
+                share() {
+                    const shareUrl = this.getShareUrl();
+                    
+                    if (navigator.share) {
+                        navigator.share({
+                            title: 'Tasbih Pro - مسبحة إلكترونية',
+                            text: this.state.deceasedName ? `الدعاء إلى روح ${this.state.deceasedName}` : 'مسبحة إلكترونية فاخرة',
+                            url: shareUrl
+                        }).catch(() => {
+                            // إذا فشلت المشاركة، انسخ الرابط كبديل
+                            this.copyToClipboard(shareUrl);
+                            alert('تم نسخ رابط المشاركة');
+                        });
+                    } else {
+                        this.copyToClipboard(shareUrl);
+                        alert('تم نسخ رابط المشاركة');
+                    }
+                },
+                
+                copyLink() {
+                    this.copyToClipboard(this.getShareUrl());
+                    alert('تم نسخ رابط المشاركة');
+                },
+                
+                copyToClipboard(text) {
+                    if (navigator.clipboard) {
+                        navigator.clipboard.writeText(text).catch(() => {
+                            this.fallbackCopy(text);
+                        });
+                    } else {
+                        this.fallbackCopy(text);
+                    }
+                },
+                
+                fallbackCopy(text) {
+                    const textarea = document.createElement('textarea');
+                    textarea.value = text;
+                    textarea.style.position = 'fixed';
+                    textarea.style.opacity = '0';
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    
                     try {
-                        const data = JSON.parse(saved);
-                        this.state.count = data.count || 0;
-                        this.state.totalCount = data.totalCount || 0;
-                        this.state.completedCircles = data.completedCircles || 0;
-                        this.state.currentDhikr = data.currentDhikr || 'سبحان الله';
-                        this.state.dhikrHistory = data.dhikrHistory || [];
-                        this.state.settings = data.settings || this.state.settings;
-                    } catch (e) {
-                        console.log('Error loading state');
-                    }
-                }
-            },
-            
-            // Setup Event Listeners
-            setupEventListeners() {
-                // Main buttons
-                this.elements.countBtn.addEventListener('click', () => this.increment());
-                this.elements.undoBtn.addEventListener('click', () => this.undo());
-                this.elements.resetBtn.addEventListener('click', () => this.reset());
+                        document.execCommand('copy');
+                    } catch (err) {}
+                    
+                    document.body.removeChild(textarea);
+                },
                 
-                // Click on counter to increment
-                this.elements.counter.addEventListener('click', () => this.increment());
-                
-                // Keyboard shortcuts
-                document.addEventListener('keydown', (e) => {
-                    switch(e.code) {
-                        case 'Space':
-                        case 'Enter':
+                // ===== إعداد الأحداث =====
+                setupEventListeners() {
+                    // الأزرار الرئيسية
+                    this.elements.countBtn?.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        this.increment();
+                    });
+                    
+                    this.elements.undoBtn?.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        this.undo();
+                    });
+                    
+                    this.elements.resetBtn?.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        this.reset();
+                    });
+                    
+                    // النقر على العداد للتسبيح
+                    this.elements.counter?.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        this.increment();
+                    });
+                    
+                    // حفظ اسم المتوفي
+                    this.elements.saveDeceasedBtn?.addEventListener('click', () => {
+                        this.saveDeceasedName();
+                    });
+                    
+                    // حفظ بالضغط على Enter
+                    this.elements.deceasedNameInput?.addEventListener('keypress', (e) => {
+                        if (e.key === 'Enter') {
                             e.preventDefault();
-                            this.increment();
-                            break;
-                        case 'KeyZ':
-                            if (e.ctrlKey || e.metaKey) {
-                                e.preventDefault();
-                                this.undo();
+                            this.saveDeceasedName();
+                        }
+                    });
+                    
+                    // أزرار المشاركة
+                    this.elements.shareBtn?.addEventListener('click', () => this.share());
+                    this.elements.copyLinkBtn?.addEventListener('click', () => this.copyLink());
+                    
+                    // اختصارات لوحة المفاتيح
+                    document.addEventListener('keydown', (e) => {
+                        // منع السلوك الافتراضي للصفحة
+                        if (e.code === 'Space' || e.code === 'Enter' || 
+                            (e.code === 'KeyZ' && (e.ctrlKey || e.metaKey)) ||
+                            e.code === 'KeyR') {
+                            
+                            // تجاهل إذا كان المستخدم يكتب في حقل النص
+                            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+                                return;
                             }
-                            break;
-                        case 'KeyR':
+                            
                             e.preventDefault();
-                            this.reset();
-                            break;
-                        case 'Digit1':
-                        case 'Digit2':
-                        case 'Digit3':
-                        case 'Digit4':
-                        case 'Digit5':
-                        case 'Digit6':
-                            const index = parseInt(e.code.replace('Digit', '')) - 1;
-                            if (this.state.dhikrTypes[index]) {
-                                this.changeDhikr(this.state.dhikrTypes[index].text);
+                            
+                            switch(e.code) {
+                                case 'Space':
+                                case 'Enter':
+                                    this.increment();
+                                    break;
+                                case 'KeyZ':
+                                    if (e.ctrlKey || e.metaKey) {
+                                        this.undo();
+                                    }
+                                    break;
+                                case 'KeyR':
+                                    this.reset();
+                                    break;
                             }
-                            break;
+                        }
+                    });
+                    
+                    // منع التكبير باللمس
+                    document.addEventListener('gesturestart', (e) => {
+                        e.preventDefault();
+                    });
+                    
+                    // تحسين التمرير على الجوال
+                    const content = document.querySelector('.main-content');
+                    if (content) {
+                        content.addEventListener('touchstart', () => {
+                            content.style.overflowY = 'auto';
+                        });
                     }
-                });
+                },
                 
-                // Touch events for mobile
-                this.elements.countBtn.addEventListener('touchstart', (e) => {
-                    e.preventDefault();
-                    this.increment();
-                }, { passive: false });
-                
-                // Prevent unwanted scrolling
-                document.addEventListener('touchmove', (e) => {
-                    if (e.target.closest('.main-content')) {
-                        // Allow scrolling in main content
-                        return;
+                // ===== Service Worker (للتشغيل بدون إنترنت) =====
+                registerServiceWorker() {
+                    if ('serviceWorker' in navigator && location.protocol === 'https:') {
+                        window.addEventListener('load', () => {
+                            // هذا اختياري - يمكن إضافة ملف service worker لاحقاً
+                            // navigator.serviceWorker.register('/sw.js').catch(err => {});
+                        });
                     }
-                    // Prevent scrolling elsewhere
-                    e.preventDefault();
-                }, { passive: false });
+                },
                 
-                // Prevent zoom
-                document.addEventListener('gesturestart', (e) => {
-                    e.preventDefault();
-                });
-            },
-            
-            // Fix Scroll for Mobile
-            setupScrollFix() {
-                const content = document.querySelector('.main-content');
-                
-                content.addEventListener('touchstart', () => {
-                    content.style.overflowY = 'auto';
-                });
-                
-                content.addEventListener('touchend', () => {
+                // إخفاء شاشة التحميل
+                hideLoading() {
                     setTimeout(() => {
-                        content.style.overflowY = 'auto';
-                    }, 100);
-                });
-                
-                // iOS specific
-                if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
-                    document.body.style.overflow = 'hidden';
-                    document.documentElement.style.overflow = 'hidden';
+                        if (this.elements.loadingOverlay) {
+                            this.elements.loadingOverlay.classList.add('hidden');
+                        }
+                    }, 600);
                 }
-            },
+            };
             
-            // Hide Loading
-            hideLoading() {
-                setTimeout(() => {
-                    this.elements.loadingOverlay.classList.add('hidden');
-                }, 800);
-            }
-        };
-        
-        // Initialize the app
-        document.addEventListener('DOMContentLoaded', () => {
-            TasbihApp.init();
-        });
-        
-        // Handle resize
-        window.addEventListener('resize', () => {
-            document.documentElement.style.height = `${window.innerHeight}px`;
-        });
-        
-        // Set initial height
-        window.dispatchEvent(new Event('resize'));
+            // بدء التطبيق
+            document.addEventListener('DOMContentLoaded', () => {
+                TasbihApp.init();
+            });
+            
+            // معالجة تغيير حجم الشاشة
+            window.addEventListener('resize', () => {
+                document.documentElement.style.height = `${window.innerHeight}px`;
+            });
+            
+            window.dispatchEvent(new Event('resize'));
+        })();
     </script>
 </body>
-</html>
+    </html>
